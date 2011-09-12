@@ -1,0 +1,38 @@
+<style>
+body {
+  min-width:357px;
+  overflow-x:hidden;
+}
+
+img {
+  margin:5px;
+  border:2px solid black;
+  vertical-align:middle;
+  width:75px;
+  height:75px;
+}
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js" type="text/javascript"></script>
+<script>
+
+$().ready(function() {
+	$("body").append("Toto");
+
+	localStorage['characters'] =  ["$", "£" ];
+
+	var characters = localStorage["characters"];
+
+	for (var i = 0; character = characters[i]; ++i) {
+		var div = document.createElement("div");
+		div.innerHtml = character;
+		$("body").append($("<div></div>").append(character));
+	}
+	
+});
+</script>
+<body>
+<div>
+Coucou 2
+</div>
+</body>
