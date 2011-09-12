@@ -1,3 +1,10 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>utf-8 icons</title>
+        <link rel="stylesheet" href="css/popup.css">
+    </head>
 <style>
 body {
   min-width:357px;
@@ -19,20 +26,24 @@ img {
 $().ready(function() {
 	$("body").append("Toto");
 
-	localStorage['characters'] =  ["$", "�" ];
+	localStorage['characters'] =  ["$", "£" "®", "©", "Ø", "؟"];
 
 	var characters = localStorage["characters"];
 
 	for (var i = 0; character = characters[i]; ++i) {
-		var div = document.createElement("div");
-		div.innerHtml = character;
 		$("body").append($("<div></div>").append(character));
 	}
 	
+	
 });
 </script>
+</head>
 <body>
 <div>
 Coucou 2
 </div>
+
+<div>
+See <a href="http://www.unicode.org/versions/Unicode6.0.0/">Unicode 6.0</a>.</div>
 </body>
+</html>
