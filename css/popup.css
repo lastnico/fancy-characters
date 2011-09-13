@@ -1,0 +1,82 @@
+body {
+	min-width:		380px;
+	overflow-x:		hidden;
+	font-family: 	'Century Gothic', arial, serif;
+}
+
+h1 {
+	font-size: 		29px;
+	color: 			#33608C;
+	font-style: 	normal;
+	font-variant: 	normal;
+	font-weight: 	normal;
+	margin: 		5px 0;
+}
+
+header div {
+	font-size:		12px;
+	color:			#666;
+	
+}
+
+ul.tabs {
+	padding:		0;
+	margin:			5px 0 0;
+}
+
+ul.tabs li {
+	display:			inline-block;
+	padding:			3px 6px 2px;
+	background-color:	#eff;
+	border-radius:		6px 6px 0px 0px;
+	border-color:		#ccc;
+	border-width: 		1px 1px 0 1px;
+	border-style: 		solid;
+	cursor:				pointer;
+	font-size:			12px;
+}
+
+section.characters {
+	display:			none;
+	font-size: 			20px;
+	padding:			2px;
+}
+
+section.characters.current {
+	display:		block;
+}
+
+section.characters span {
+	font-weight:		bold;
+	padding:			0 2px;
+	cursor:				pointer;
+}
+
+section.characters span:hover {
+	background-color: 	#dff;
+	border-radius:		5px;
+}
+
+section {
+	padding:			5;
+	border:				1px solid #ccc;
+}
+
+
+section#tools #result {
+	text-align:			center;
+	font-size:			16px;
+	padding:			5px 10px;
+	border:				1px solid #eee;
+}
+
+section#tools label {
+	display:			inline-block;
+	width:				25%;
+	font-size:			14px;
+	text-align: 		right;
+}
+
+section#tools input {
+	width:				65%;
+}

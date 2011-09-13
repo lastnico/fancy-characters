@@ -1,65 +1,815 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-<style>
-body {
-  min-width:357px;
-  overflow-x:hidden;
-}
-
-#characters span {
-	font-size: 			20px;
-	font-weight:		bold;
-	padding:			2px 5px;
-	cursor:				pointer;
-}
-
-#characters span:hover {
-	background-color: 	#dff;
-	border-radius:		5px;
-}
-
-</style>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js" type="text/javascript"></script>
-<script>
-
-$().ready(function() {
-
-	localStorage['characters'] = JSON.stringify([ "$", "£", "®", "©", "Ø", "؟" ]);
-
-	var characters = JSON.parse(localStorage["characters"]);
-
-	for (var i = 0; character = characters[i]; ++i) {
-		$("#characters").append($("<span></span>").append(character).click(function() {
-			appendCharacter($(this).text());
-		}));
-	}
-	
-	
-	
-});
-
-function appendCharacter(character) {
-	chrome.tabs.getSelected(null, function(tab) {
-		$("body").append("Clicked on " + character);
-	    chrome.tabs.sendRequest(tab.id, { content : character});
-	});
-}
-</script>
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/popup.css" />
 </head>
 <body>
+	<header>
+		<div>
+			Click on a character to append it to the focused element of the page.
+		</div>
+		
+		<ul class="tabs">
+			<li rel="misc">Misc</li>
+			<li rel="symbols">Symbols</li>
+			<li rel="math">Math</li>
+			<li rel="shapes">Shapes</li>
+			<li rel="custom">Custom</li>
+			<li rel="tools">Tools</li>
+			<li rel="encryption">Encryption</li>
+		</ul>
+	</header>
+	
+	<article>
+
+		<section class="characters" id="misc">
+		<div>
+		
+<span data-entity="copy" data-name="COPYRIGHT SIGN">©</span>
+<span data-entity="reg" data-name="REGISTERED SIGN">®</span>
+<span>™</span>
+<span data-entity="cent" data-name="CENT SIGN">¢</span>
+<span data-entity="yen" data-name="YEN SIGN">¥</span>
+<span data-entity="para" data-name="PILCROW SIGN">¶</span>
+<span data-entity="sect" data-name="SECTION SIGN">§</span>
+<span>Ø</span>
+<span>؟</span>
+<span>✄</span>
+<span>✎</span>
+<span>∞</span>
+<span>ø</span>
+<span>≠</span>
+<span>%</span>
+<span>…</span>
+</div>			 
 
 <div>
-	Click on a character to append it to the focused element of the page.
+<span>☺</span>
+<span>☻</span>
+<span>☹</span>
+<span>☃</span>
+<span>☠</span>
+<span>⚠</span>
+<span>⚡</span>
+<span>✆</span>
+<span>♿</span>
+<span>♀</span>
+<span>♂</span>
+</div>
+<div>
+<span>✈</span>
+<span>☎</span>
+<span>☏</span>
+<span>☂</span>
+<span>✉</span>
+<span>☄</span>
+<span>☽</span>
+<span>☾</span>
+<span>✇</span>
+
 </div>
 
-<section id="characters">
-</section>
+<div>
+<span>☯</span>
+<span>✞</span>
+<span>☨</span>
+<span>☭</span>
+<span>☮</span>
+<span>☪</span>
+<span>☫</span>
+<span>✠</span>
+<span>✡</span>
+<span>♬</span>
+<span>♫</span>
+<span>♩</span>
+
+</div>
+<div>
+<span>❁</span>
+<span>❀</span>
+<span>✿</span>
+<span>✽</span>
+<span>✾</span>
+<span>❃</span>
+<span>⚘</span>
+<span>☘</span>
+<span data-entity="laquo" data-name="LEFT-POINTING DOUBLE ANGLE QUOTATION MARK">«</span>
+<span data-entity="raquo" data-name="RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK">»</span>
+<span data-name="GEAR">⚙</span>
+<span data-name="STAFF OF HERMES">⚚</span>
+<span data-name="ATOM SYMBOL">⚛</span>
+<span data-name="FLEUR-DE-LIS">⚜</span>
+<span data-name="WARNING SIGN">⚠</span>
+</div>
 
 <div>
-See <a href="http://www.unicode.org/versions/Unicode6.0.0/">Unicode 6.0</a>.</div>
+<span>♚</span>
+<span>♛</span>
+<span>♜</span>
+<span>♝</span>
+<span>♞</span>
+<span>♟</span>
+<span>♔</span>
+<span>♕</span>
+<span>♖</span>
+<span>♗</span>
+<span>♘</span>
+<span>♙</span>
+
+</div>
+<div>
+<span>✩</span>
+<span>☆</span>
+<span>☼</span>
+<span>✫</span>
+<span>✰</span>
+<span>✪</span>
+<span>✬</span>
+<span>★</span>
+<span>✮</span>
+<span>☐</span>
+<span>☑</span>
+<span>☒</span>
+
+</div>
+<div>
+<span>♽</span>
+<span>♻</span>
+<span>✱</span>
+<span>✸</span>
+<span>✻</span>
+<span>❊</span>
+<span>❋</span>
+<span>❅</span>
+<span>⚜</span>
+<span>☢</span>
+<span>☣</span>
+<span>⚛</span>
+</div>
+<div>
+<span>☤</span>
+<span>⚕</span>
+<span>⚒</span>
+<span>⚓</span>
+<span>⚙</span>
+<span>∝</span>
+<span>⚑</span>
+<span>⚐</span>
+<span>❦</span>
+<span>☙</span>
+<span>♨</span>
+<span>☁</span>
+<span>⚖</span>
+</div>
+
+<div>
+<span>✓</span>
+<span>✔</span>
+<span>✖</span>
+<span>✘</span>
+<span>✚</span>
+<span>✌</span>
+<span>✍</span>
+<span>☟</span>
+<span>☝</span>
+<span>☜</span>
+<span>☚</span>
+<span>☞</span>
+<span>☛</span>
+</div>
+
+<div>
+<span>♥</span>
+<span>♠</span>
+<span>♦</span>
+<span>♣</span>
+<span>♡</span>
+<span>♤</span>
+<span>♢</span>
+<span>♧</span>
+</div>
+
+<span data-entity="iquest" data-name="INVERTED QUESTION MARK">¿</span>
+<span data-entity="iexcl" data-name="INVERTED EXCLAMATION MARK">¡</span>
+<span data-name="BLACK TELEPHONE">☎</span>
+<span data-name="WHITE TELEPHONE">☏</span>
+
+		</section>
+		
+		<section class="characters" id="symbols">
+		µ∂ΩΦΨλϴωꝏᵠ℃℉
+		<span data-name="HAMMER AND SICKLE">☭</span>
+<span data-name="PEACE SYMBOL">☮</span>
+<span data-name="YIN YANG">☯</span>
+<span data-name="TRIGRAM FOR HEAVEN">☰</span>
+<span data-name="TRIGRAM FOR LAKE">☱</span>
+<span data-name="TRIGRAM FOR FIRE">☲</span>
+<span data-name="TRIGRAM FOR THUNDER">☳</span>
+<span data-name="TRIGRAM FOR WIND">☴</span>
+<span data-name="TRIGRAM FOR WATER">☵</span>
+<span data-name="TRIGRAM FOR MOUNTAIN">☶</span>
+<span data-name="TRIGRAM FOR EARTH">☷</span>
+<span data-name="WHEEL OF DHARMA">☸</span>
+<span data-name="WHITE FROWNING FACE">☹</span>
+<span data-name="WHITE SMILING FACE">☺</span>
+<span data-name="BLACK SMILING FACE">☻</span>
+<span data-name="WHITE SUN WITH RAYS">☼</span>
+<span data-name="FIRST QUARTER MOON">☽</span>
+<span data-name="LAST QUARTER MOON">☾</span>
+<span data-name="MERCURY">☿</span>
+<span data-name="EARTH">♁</span>
+<span data-name="JUPITER">♃</span>
+<span data-name="SATURN">♄</span>
+<span data-name="URANUS">♅</span>
+<span data-name="NEPTUNE">♆</span>
+<span data-name="PLUTO">♇</span>
+<span data-name="ARIES">♈</span>
+<span data-name="TAURUS">♉</span>
+<span data-name="GEMINI">♊</span>
+<span data-name="CANCER">♋</span>
+<span data-name="LEO">♌</span>
+<span data-name="VIRGO">♍</span>
+<span data-name="LIBRA">♎</span>
+<span data-name="SCORPIUS">♏</span>
+<span data-name="SAGITTARIUS">♐</span>
+<span data-name="CAPRICORN">♑</span>
+<span data-name="AQUARIUS">♒</span>
+<span data-name="PISCES">♓</span>
+		
+		</section>
+		
+		<section class="characters" id="math">
+<span data-entity="plusmn" data-name="PLUS-MINUS SIGN">±</span>
+<span data-entity="frac14" data-name="VULGAR FRACTION ONE QUARTER">¼</span>
+<span data-entity="frac12" data-name="VULGAR FRACTION ONE HALF">½</span>
+<span data-entity="frac34" data-name="VULGAR FRACTION THREE QUARTERS">¾</span>
+<span data-name="VULGAR FRACTION ONE THIRD">⅓</span>
+<span data-name="VULGAR FRACTION TWO THIRDS">⅔</span>
+<span data-name="VULGAR FRACTION ONE FIFTH">⅕</span>
+<span data-name="VULGAR FRACTION TWO FIFTHS">⅖</span>
+<span data-name="VULGAR FRACTION THREE FIFTHS">⅗</span>
+<span data-name="VULGAR FRACTION FOUR FIFTHS">⅘</span>
+<span data-name="VULGAR FRACTION ONE SIXTH">⅙</span>
+<span data-name="VULGAR FRACTION FIVE SIXTHS">⅚</span>
+<span data-name="VULGAR FRACTION ONE EIGHTH (present in WGL4)">⅛</span>
+<span data-name="VULGAR FRACTION THREE EIGHTHS (present in WGL4)">⅜</span>
+<span data-name="VULGAR FRACTION FIVE EIGHTHS (present in WGL4)">⅝</span>
+<span data-name="VULGAR FRACTION SEVEN EIGHTHS (present in WGL4)">⅞</span>
+
+<span data-name="SUPERSCRIPT LATIN SMALL LETTER I">ⁱ</span>
+<span data-name="SUPERSCRIPT ZERO">⁰</span>
+<span data-entity="sup1" data-name="SUPERSCRIPT ONE">¹</span>
+<span data-entity="sup2" data-name="SUPERSCRIPT TWO">²</span>
+<span data-entity="sup3" data-name="SUPERSCRIPT THREE">³</span>
+<span data-name="SUPERSCRIPT FOUR">⁴</span>
+<span data-name="SUPERSCRIPT FIVE">⁵</span>
+<span data-name="SUPERSCRIPT SIX">⁶</span>
+<span data-name="SUPERSCRIPT SEVEN">⁷</span>
+<span data-name="SUPERSCRIPT EIGHT">⁸</span>
+<span data-name="SUPERSCRIPT NINE">⁹</span>
+<span data-name="SUPERSCRIPT PLUS SIGN">⁺</span>
+<span data-name="SUPERSCRIPT MINUS">⁻</span>
+<span data-name="SUPERSCRIPT EQUALS SIGN">⁼</span>
+<span data-name="SUPERSCRIPT LEFT PARENTHESIS">⁽</span>
+<span data-name="SUPERSCRIPT RIGHT PARENTHESIS">⁾</span>
+<span data-name="SUPERSCRIPT LATIN SMALL LETTER N (present in WGL4)">ⁿ</span>
+<span data-name="SUBSCRIPT ZERO">₀</span>
+<span data-name="SUBSCRIPT ONE">₁</span>
+<span data-name="SUBSCRIPT TWO">₂</span>
+<span data-name="SUBSCRIPT THREE">₃</span>
+<span data-name="SUBSCRIPT FOUR">₄</span>
+<span data-name="SUBSCRIPT FIVE">₅</span>
+<span data-name="SUBSCRIPT SIX">₆</span>
+<span data-name="SUBSCRIPT SEVEN">₇</span>
+<span data-name="SUBSCRIPT EIGHT">₈</span>
+<span data-name="SUBSCRIPT NINE">₉</span>
+<span data-name="SUBSCRIPT PLUS SIGN">₊</span>
+<span data-name="SUBSCRIPT MINUS">₋</span>
+<span data-name="SUBSCRIPT EQUALS SIGN">₌</span>
+<span data-name="SUBSCRIPT LEFT PARENTHESIS">₍</span>
+<span data-name="SUBSCRIPT RIGHT PARENTHESIS">₎</span>
+
+<span data-entity="&forall" data-name="FOR ALL">∀</span>
+<span data-name="COMPLEMENT">∁</span>
+<span data-entity="&part" data-name="PARTIAL DIFFERENTIAL">∂</span>
+<span data-entity="&exist" data-name="THERE EXISTS">∃</span>
+<span data-name="THERE DOES NOT EXIST">∄</span>
+<span data-entity="&empty" data-name="EMPTY SET">∅</span>
+<span data-name="INCREMENT">∆</span>
+<span data-entity="&nabla" data-name="NABLA">∇</span>
+<span data-entity="&isin" data-name="ELEMENT OF">∈</span>
+<span data-entity="&notin" data-name="NOT AN ELEMENT OF">∉</span>
+<span data-name="SMALL ELEMENT OF">∊</span>
+<span data-entity="&ni" data-name="CONTAINS AS MEMBER">∋</span>
+<span data-name="DOES NOT CONTAIN AS MEMBER">∌</span>
+<span data-name="SMALL CONTAINS AS MEMBER">∍</span>
+<span data-name="END OF PROOF">∎</span>
+<span data-entity="&prod" data-name="N-ARY PRODUCT">∏</span>
+<span data-name="N-ARY COPRODUCT">∐</span>
+<span data-entity="&sum" data-name="N-ARY SUMMATION">∑</span>
+<span data-entity="&minus" data-name="MINUS SIGN">−</span>
+<span data-name="MINUS-OR-PLUS SIGN">∓</span>
+<span data-name="DOT PLUS">∔</span>
+<span data-name="DIVISION SLASH">∕</span>
+<span data-name="SET MINUS">∖</span>
+<span data-entity="&lowast" data-name="ASTERISK OPERATOR">∗</span>
+<span data-name="RING OPERATOR">∘</span>
+<span data-name="BULLET OPERATOR">∙</span>
+<span data-entity="&radic" data-name="SQUARE ROOT">√</span>
+<span data-name="CUBE ROOT">∛</span>
+<span data-name="FOURTH ROOT">∜</span>
+<span data-entity="&prop" data-name="PROPORTIONAL TO">∝</span>
+<span data-entity="&infin" data-name="INFINITY">∞</span>
+<span data-name="RIGHT ANGLE">∟</span>
+<span data-entity="&ang" data-name="ANGLE">∠</span>
+<span data-name="MEASURED ANGLE">∡</span>
+<span data-name="SPHERICAL ANGLE">∢</span>
+<span data-name="DIVIDES">∣</span>
+<span data-name="DOES NOT DIVIDE">∤</span>
+<span data-name="PARALLEL TO">∥</span>
+<span data-name="NOT PARALLEL TO">∦</span>
+<span data-entity="&and" data-name="LOGICAL AND">∧</span>
+<span data-entity="&or" data-name="LOGICAL OR">∨</span>
+<span data-entity="&cap" data-name="INTERSECTION">∩</span>
+<span data-entity="&cup" data-name="UNION">∪</span>
+<span data-entity="&int" data-name="INTEGRAL">∫</span>
+<span data-name="DOUBLE INTEGRAL">∬</span>
+<span data-name="TRIPLE INTEGRAL">∭</span>
+<span data-name="CONTOUR INTEGRAL">∮</span>
+<span data-name="SURFACE INTEGRAL">∯</span>
+<span data-name="VOLUME INTEGRAL">∰</span>
+<span data-name="N-ARY CIRCLED DOT OPERATOR">⨀</span>
+<span data-name="N-ARY CIRCLED PLUS OPERATOR">⨁</span>
+<span data-name="N-ARY CIRCLED TIMES OPERATOR">⨂</span>
+<span data-name="QUADRUPLE INTEGRAL OPERATOR">⨌</span>
+<span data-name="FINITE PART INTEGRAL">⨍</span>
+<span data-name="INTEGRAL WITH DOUBLE STROKE">⨎</span>
+<span data-name="INTEGRAL AVERAGE WITH SLASH">⨏</span>
+<span data-name="CIRCULATION FUNCTION">⨐</span>
+<span data-name="ANTICLOCKWISE INTEGRATION">⨑</span>
+<span data-name="LINE INTEGRATION WITH RECTANGULAR PATH AROUND POLE">⨒</span>
+<span data-name="LINE INTEGRATION WITH SEMICIRCULAR PATH AROUND POLE">⨓</span>
+<span data-name="LINE INTEGRATION NOT INCLUDING THE POLE">⨔</span>
+<span data-name="INTEGRAL AROUND A POINT OPERATOR">⨕</span>
+<span data-name="QUATERNION INTEGRAL OPERATOR">⨖</span>
+<span data-name="INTEGRAL WITH LEFTWARDS ARROW WITH HOOK">⨗</span>
+<span data-name="INTEGRAL WITH TIMES SIGN">⨘</span>
+<span data-name="INTEGRAL WITH INTERSECTION">⨙</span>
+<span data-name="INTEGRAL WITH UNION">⨚</span>
+<span data-name="INTEGRAL WITH OVERBAR">⨛</span>
+<span data-name="INTEGRAL WITH UNDERBAR">⨜</span>
+<span data-name="CLOCKWISE INTEGRAL">∱</span>
+<span data-name="CLOCKWISE CONTOUR INTEGRAL">∲</span>
+<span data-name="ANTICLOCKWISE CONTOUR INTEGRAL">∳</span>
+<span data-entity="&there4" data-name="THEREFORE">∴</span>
+<span data-name="BECAUSE">∵</span>
+<span data-name="RATIO">∶</span>
+<span data-name="PROPORTION">∷</span>
+<span data-name="DOT MINUS">∸</span>
+<span data-name="EXCESS">∹</span>
+<span data-name="GEOMETRIC PROPORTION">∺</span>
+<span data-name="HOMOTHETIC">∻</span>
+<span data-entity="&sim" data-name="TILDE OPERATOR">∼</span>
+<span data-name="REVERSED TILDE">∽</span>
+<span data-name="INVERTED LAZY S">∾</span>
+<span data-name="SINE WAVE">∿</span>
+<span data-name="WREATH PRODUCT">≀</span>
+<span data-name="NOT TILDE">≁</span>
+<span data-name="MINUS TILDE">≂</span>
+<span data-name="ASYMPTOTICALLY EQUAL TO">≃</span>
+<span data-name="NOT ASYMPTOTICALLY EQUAL TO">≄</span>
+<span data-entity="&cong" data-name="APPROXIMATELY EQUAL TO">≅</span>
+<span data-name="APPROXIMATELY BUT NOT ACTUALLY EQUAL TO">≆</span>
+<span data-name="NEITHER APPROXIMATELY NOR ACTUALLY EQUAL TO">≇</span>
+<span data-entity="&asymp" data-name="ALMOST EQUAL TO">≈</span>
+<span data-name="NOT ALMOST EQUAL TO">≉</span>
+<span data-entity="&ne" data-name="NOT EQUAL TO">≠</span>
+<span data-entity="&equiv" data-name="IDENTICAL TO">≡</span>
+<span data-name="NOT IDENTICAL TO">≢</span>
+<span data-name="STRICTLY EQUIVALENT TO">≣</span>
+<span data-entity="&le" data-name="LESS-THAN OR EQUAL TO">≤</span>
+<span data-entity="&ge" data-name="GREATER-THAN OR EQUAL TO">≥</span>
+<span data-name="LESS-THAN OVER EQUAL TO">≦</span>
+<span data-name="GREATER-THAN OVER EQUAL TO">≧</span>
+<span data-name="LESS-THAN BUT NOT EQUAL TO">≨</span>
+<span data-name="GREATER-THAN BUT NOT EQUAL TO">≩</span>
+<span data-name="MUCH LESS-THAN">≪</span>
+<span data-name="MUCH GREATER-THAN">≫</span>
+<span data-name="BETWEEN">≬</span>
+<span data-name="NOT EQUIVALENT TO">≭</span>
+<span data-name="NOT LESS-THAN">≮</span>
+<span data-name="NOT GREATER-THAN">≯</span>
+<span data-name="NEITHER LESS-THAN NOR EQUAL TO">≰</span>
+<span data-name="NEITHER GREATER-THAN NOR EQUAL TO">≱</span>
+<span data-name="LESS-THAN OR EQUIVALENT TO">≲</span>
+<span data-name="GREATER-THAN OR EQUIVALENT TO">≳</span>
+<span data-name="NEITHER LESS-THAN NOR EQUIVALENT TO">≴</span>
+<span data-name="NEITHER GREATER-THAN NOR EQUIVALENT TO">≵</span>
+<span data-name="LESS-THAN OR GREATER-THAN">≶</span>
+<span data-name="GREATER-THAN OR LESS-THAN">≷</span>
+<span data-name="NEITHER LESS-THAN NOR GREATER-THAN">≸</span>
+<span data-name="NEITHER GREATER-THAN NOR LESS-THAN">≹</span>
+<span data-name="PRECEDES">≺</span>
+<span data-name="SUCCEEDS">≻</span>
+<span data-name="PRECEDES OR EQUAL TO">≼</span>
+<span data-name="SUCCEEDS OR EQUAL TO">≽</span>
+<span data-name="PRECEDES OR EQUIVALENT TO">≾</span>
+<span data-name="SUCCEEDS OR EQUIVALENT TO">≿</span>
+<span data-name="DOES NOT PRECEDE">⊀</span>
+<span data-name="DOES NOT SUCCEED">⊁</span>
+<span data-entity="&sub" data-name="SUBSET OF">⊂</span>
+<span data-entity="&sup" data-name="SUPERSET OF">⊃</span>
+<span data-entity="&nsub" data-name="NOT A SUBSET OF">⊄</span>
+<span data-name="NOT A SUPERSET OF">⊅</span>
+<span data-entity="&sube" data-name="SUBSET OF OR EQUAL TO">⊆</span>
+<span data-entity="&supe" data-name="SUPERSET OF OR EQUAL TO">⊇</span>
+<span data-name="NEITHER A SUBSET OF NOR EQUAL TO">⊈</span>
+<span data-name="NEITHER A SUPERSET OF NOR EQUAL TO">⊉</span>
+<span data-name="SUBSET OF WITH NOT EQUAL TO">⊊</span>
+<span data-name="SUPERSET OF WITH NOT EQUAL TO">⊋</span>
+<span data-name="MULTISET">⊌</span>
+<span data-name="MULTISET MULTIPLICATION">⊍</span>
+<span data-name="MULTISET UNION">⊎</span>
+<span data-name="SQUARE IMAGE OF">⊏</span>
+<span data-name="SQUARE ORIGINAL OF">⊐</span>
+<span data-name="SQUARE IMAGE OF OR EQUAL TO">⊑</span>
+<span data-name="SQUARE ORIGINAL OF OR EQUAL TO">⊒</span>
+<span data-name="SQUARE CAP">⊓</span>
+<span data-name="SQUARE CUP">⊔</span>
+<span data-entity="&oplus" data-name="CIRCLED PLUS">⊕</span>
+<span data-name="CIRCLED MINUS">⊖</span>
+<span data-entity="&otimes" data-name="CIRCLED TIMES">⊗</span>
+<span data-name="CIRCLED DIVISION SLASH">⊘</span>
+<span data-name="CIRCLED DOT OPERATOR">⊙</span>
+<span data-name="CIRCLED RING OPERATOR">⊚</span>
+<span data-name="CIRCLED ASTERISK OPERATOR">⊛</span>
+<span data-name="CIRCLED EQUALS">⊜</span>
+<span data-name="CIRCLED DASH">⊝</span>
+<span data-name="SQUARED PLUS">⊞</span>
+<span data-name="SQUARED MINUS">⊟</span>
+<span data-name="SQUARED TIMES">⊠</span>
+<span data-name="SQUARED DOT OPERATOR">⊡</span>
+<span data-name="RIGHT TACK">⊢</span>
+<span data-name="LEFT TACK">⊣</span>
+<span data-name="DOWN TACK">⊤</span>
+<span data-entity="&perp" data-name="UP TACK">⊥</span>
+<span data-name="ASSERTION">⊦</span>
+<span data-name="MODELS">⊧</span>
+<span data-name="TRUE">⊨</span>
+<span data-name="FORCES">⊩</span>
+<span data-name="TRIPLE VERTICAL BAR RIGHT TURNSTILE">⊪</span>
+<span data-name="DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE">⊫</span>
+<span data-name="DOES NOT PROVE">⊬</span>
+<span data-name="NOT TRUE">⊭</span>
+<span data-name="DOES NOT FORCE">⊮</span>
+<span data-name="NEGATED DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE">⊯</span>
+<span data-name="PRECEDES UNDER RELATION">⊰</span>
+<span data-name="SUCCEEDS UNDER RELATION">⊱</span>
+<span data-name="NORMAL SUBGROUP OF">⊲</span>
+<span data-name="CONTAINS AS NORMAL SUBGROUP">⊳</span>
+<span data-name="NORMAL SUBGROUP OF OR EQUAL TO">⊴</span>
+<span data-name="CONTAINS AS NORMAL SUBGROUP OR EQUAL TO">⊵</span>
+<span data-name="ORIGINAL OF">⊶</span>
+<span data-name="IMAGE OF">⊷</span>
+<span data-name="MULTIMAP">⊸</span>
+<span data-name="HERMITIAN CONJUGATE MATRIX">⊹</span>
+<span data-name="INTERCALATE">⊺</span>
+<span data-name="XOR">⊻</span>
+<span data-name="NAND">⊼</span>
+<span data-name="NOR">⊽</span>
+<span data-name="RIGHT ANGLE WITH ARC">⊾</span>
+<span data-name="RIGHT TRIANGLE">⊿</span>
+<span data-name="N-ARY LOGICAL AND">⋀</span>
+<span data-name="N-ARY LOGICAL OR">⋁</span>
+<span data-name="N-ARY INTERSECTION">⋂</span>
+<span data-name="N-ARY UNION">⋃</span>
+<span data-name="DIAMOND OPERATOR">⋄</span>
+<span data-entity="&sdot" data-name="DOT OPERATOR">⋅</span>
+<span data-name="STAR OPERATOR">⋆</span>
+<span data-name="DIVISION TIMES">⋇</span>
+<span data-name="BOWTIE">⋈</span>
+<span data-name="LEFT NORMAL FACTOR SEMIDIRECT PRODUCT">⋉</span>
+<span data-name="RIGHT NORMAL FACTOR SEMIDIRECT PRODUCT">⋊</span>
+<span data-name="LEFT SEMIDIRECT PRODUCT">⋋</span>
+<span data-name="RIGHT SEMIDIRECT PRODUCT">⋌</span>
+<span data-name="REVERSED TILDE EQUALS">⋍</span>
+<span data-name="CURLY LOGICAL OR">⋎</span>
+<span data-name="CURLY LOGICAL AND">⋏</span>
+<span data-name="DOUBLE SUBSET">⋐</span>
+<span data-name="DOUBLE SUPERSET">⋑</span>
+<span data-name="DOUBLE INTERSECTION">⋒</span>
+<span data-name="DOUBLE UNION">⋓</span>
+<span data-name="PITCHFORK">⋔</span>
+<span data-name="VERY MUCH LESS-THAN">⋘</span>
+<span data-name="VERY MUCH GREATER-THAN">⋙</span>
+<span data-name="LESS-THAN EQUAL TO OR GREATER-THAN">⋚</span>
+<span data-name="GREATER-THAN EQUAL TO OR LESS-THAN">⋛</span>
+<span data-name="EQUAL TO OR LESS-THAN">⋜</span>
+<span data-name="EQUAL TO OR GREATER-THAN">⋝</span>
+<span data-name="VERTICAL ELLIPSIS">⋮</span>
+<span data-name="MIDLINE HORIZONTAL ELLIPSIS">⋯</span>
+<span data-name="UP RIGHT DIAGONAL ELLIPSIS">⋰</span>
+<span data-name="DOWN RIGHT DIAGONAL ELLIPSIS">⋱</span>
+
+
+		</section>
+		
+		<section class="characters" id="shapes">
+			
+<span data-name="BLACK SQUARE">■</span>
+<span data-name="WHITE SQUARE">□</span>
+<span data-name="WHITE SQUARE WITH ROUNDED CORNERS">▢</span>
+<span data-name="BLACK SMALL SQUARE">▪</span>
+<span data-name="WHITE SMALL SQUARE">▫</span>
+<span data-name="BLACK RECTANGLE">▬</span>
+<span data-name="WHITE RECTANGLE">▭</span>
+<span data-name="BLACK VERTICAL RECTANGLE">▮</span>
+<span data-name="WHITE VERTICAL RECTANGLE">▯</span>
+<span data-name="BLACK PARALLELOGRAM">▰</span>
+<span data-name="WHITE PARALLELOGRAM">▱</span>
+<span data-name="BLACK UP-POINTING TRIANGLE">▲</span>
+<span data-name="WHITE UP-POINTING TRIANGLE">△</span>
+<span data-name="BLACK UP-POINTING SMALL TRIANGLE">▴</span>
+<span data-name="WHITE UP-POINTING SMALL TRIANGLE">▵</span>
+<span data-name="BLACK RIGHT-POINTING TRIANGLE">▶</span>
+<span data-name="WHITE RIGHT-POINTING TRIANGLE">▷</span>
+<span data-name="BLACK RIGHT-POINTING SMALL TRIANGLE">▸</span>
+<span data-name="WHITE RIGHT-POINTING SMALL TRIANGLE">▹</span>
+<span data-name="BLACK RIGHT-POINTING POINTER">►</span>
+<span data-name="WHITE RIGHT-POINTING POINTER">▻</span>
+<span data-name="BLACK DOWN-POINTING TRIANGLE">▼</span>
+<span data-name="WHITE DOWN-POINTING TRIANGLE">▽</span>
+<span data-name="BLACK DOWN-POINTING SMALL TRIANGLE">▾</span>
+<span data-name="WHITE DOWN-POINTING SMALL TRIANGLE">▿</span>
+<span data-name="BLACK LEFT-POINTING TRIANGLE">◀</span>
+<span data-name="WHITE LEFT-POINTING TRIANGLE">◁</span>
+<span data-name="BLACK LEFT-POINTING SMALL TRIANGLE">◂</span>
+<span data-name="WHITE LEFT-POINTING SMALL TRIANGLE">◃</span>
+<span data-name="BLACK LEFT-POINTING POINTER">◄</span>
+<span data-name="WHITE LEFT-POINTING POINTER">◅</span>
+<span data-name="BLACK DIAMOND">◆</span>
+<span data-name="WHITE DIAMOND">◇</span>
+<span data-name="WHITE DIAMOND CONTAINING BLACK SMALL DIAMOND">◈</span>
+<span data-name="FISHEYE">◉</span>
+<span data-entity="loz" data-name="LOZENGE">◊</span>
+<span data-name="WHITE CIRCLE">○</span>
+<span data-name="DOTTED CIRCLE">◌</span>
+<span data-name="CIRCLE WITH VERTICAL FILL">◍</span>
+<span data-name="BULLSEYE">◎</span>
+<span data-name="BLACK CIRCLE">●</span>
+<span data-name="CIRCLE WITH LEFT HALF BLACK">◐</span>
+<span data-name="CIRCLE WITH RIGHT HALF BLACK">◑</span>
+<span data-name="CIRCLE WITH LOWER HALF BLACK">◒</span>
+<span data-name="CIRCLE WITH UPPER HALF BLACK">◓</span>
+<span data-name="CIRCLE WITH UPPER RIGHT QUADRANT BLACK">◔</span>
+<span data-name="CIRCLE WITH ALL BUT UPPER LEFT QUADRANT BLACK">◕</span>
+<span data-name="LEFT HALF BLACK CIRCLE">◖</span>
+<span data-name="RIGHT HALF BLACK CIRCLE">◗</span>
+<span data-name="INVERSE BULLET">◘</span>
+<span data-name="INVERSE WHITE CIRCLE">◙</span>
+<span data-name="UPPER HALF INVERSE WHITE CIRCLE">◚</span>
+<span data-name="LOWER HALF INVERSE WHITE CIRCLE">◛</span>
+<span data-name="UPPER LEFT QUADRANT CIRCULAR ARC">◜</span>
+<span data-name="UPPER RIGHT QUADRANT CIRCULAR ARC">◝</span>
+<span data-name="LOWER RIGHT QUADRANT CIRCULAR ARC">◞</span>
+<span data-name="LOWER LEFT QUADRANT CIRCULAR ARC">◟</span>
+<span data-name="UPPER HALF CIRCLE">◠</span>
+<span data-name="LOWER HALF CIRCLE">◡</span>
+<span data-name="WHITE BULLET">◦</span>
+<span data-name="WHITE SQUARE WITH VERTICAL BISECTING LINE">◫</span>
+<span data-name="WHITE UP-POINTING TRIANGLE WITH DOT">◬</span>
+<span data-name="UP-POINTING TRIANGLE WITH LEFT HALF BLACK">◭</span>
+<span data-name="UP-POINTING TRIANGLE WITH RIGHT HALF BLACK">◮</span>
+<span data-name="LARGE CIRCLE">◯</span>
+<span data-name="WHITE MEDIUM SQUARE">◻</span>
+<span data-name="BLACK MEDIUM SQUARE">◼</span>
+<span data-name="WHITE MEDIUM SMALL SQUARE">◽</span>
+<span data-name="BLACK MEDIUM SMALL SQUARE">◾</span>
+<span data-name="LOWER RIGHT TRIANGLE">◿</span>
+
+
+<span data-name="SQUARE WITH TOP HALF BLACK">⬒</span>
+<span data-name="SQUARE WITH BOTTOM HALF BLACK">⬓</span>
+<span data-name="SQUARE WITH UPPER RIGHT DIAGONAL HALF BLACK">⬔</span>
+<span data-name="SQUARE WITH LOWER LEFT DIAGONAL HALF BLACK">⬕</span>
+<span data-name="DIAMOND WITH LEFT HALF BLACK">⬖</span>
+<span data-name="DIAMOND WITH RIGHT HALF BLACK">⬗</span>
+<span data-name="DIAMOND WITH TOP HALF BLACK">⬘</span>
+<span data-name="DIAMOND WITH BOTTOM HALF BLACK">⬙</span>
+<span data-name="DOTTED SQUARE">⬚</span>
+<span data-name="BLACK PENTAGON">⬟</span>
+<span data-name="WHITE PENTAGON">⬠</span>
+<span data-name="WHITE HEXAGON">⬡</span>
+<span data-name="BLACK HEXAGON">⬢</span>
+<span data-name="HORIZONTAL BLACK HEXAGON">⬣</span>
+<span data-name="BLACK LARGE CIRCLE">⬤</span>
+<span data-name="BLACK RIGHT-POINTING PENTAGON">⭓</span>
+<span data-name="WHITE RIGHT-POINTING PENTAGON">⭔</span>
+<span data-entity="larr" data-name="LEFTWARDS ARROW">←</span>
+<span data-entity="uarr" data-name="UPWARDS ARROW">↑</span>
+<span data-entity="rarr" data-name="RIGHTWARDS ARROW">→</span>
+<span data-entity="darr" data-name="DOWNWARDS ARROW">↓</span>
+<span data-entity="harr" data-name="LEFT RIGHT ARROW">↔</span>
+<span data-name="UP DOWN ARROW">↕</span>
+<span data-name="NORTH WEST ARROW">↖</span>
+<span data-name="NORTH EAST ARROW">↗</span>
+<span data-name="SOUTH EAST ARROW">↘</span>
+<span data-name="SOUTH WEST ARROW">↙</span>
+<span data-name="LEFTWARDS ARROW WITH HOOK">↩</span>
+<span data-name="RIGHTWARDS ARROW WITH HOOK">↪</span>
+<span data-name="UPWARDS ARROW WITH TIP LEFTWARDS">↰</span>
+<span data-name="UPWARDS ARROW WITH TIP RIGHTWARDS">↱</span>
+<span data-name="DOWNWARDS ARROW WITH TIP LEFTWARDS">↲</span>
+<span data-name="DOWNWARDS ARROW WITH TIP RIGHTWARDS">↳</span>
+<span data-name="RIGHTWARDS ARROW WITH CORNER DOWNWARDS">↴</span>
+<span data-entity="crarr" data-name="DOWNWARDS ARROW WITH CORNER LEFTWARDS">↵</span>
+<span data-name="ANTICLOCKWISE TOP SEMICIRCLE ARROW">↶</span>
+<span data-name="CLOCKWISE TOP SEMICIRCLE ARROW">↷</span>
+<span data-name="NORTH WEST ARROW TO LONG BAR">↸</span>
+<span data-name="LEFTWARDS ARROW TO BAR OVER RIGHTWARDS ARROW TO BAR">↹</span>
+<span data-name="ANTICLOCKWISE OPEN CIRCLE ARROW">↺</span>
+<span data-name="CLOCKWISE OPEN CIRCLE ARROW">↻</span>
+<span data-name="LEFTWARDS HARPOON OVER RIGHTWARDS HARPOON">⇋</span>
+<span data-name="RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON">⇌</span>
+<span data-entity="lArr" data-name="LEFTWARDS DOUBLE ARROW">⇐</span>
+<span data-entity="uArr" data-name="UPWARDS DOUBLE ARROW">⇑</span>
+<span data-entity="rArr" data-name="RIGHTWARDS DOUBLE ARROW">⇒</span>
+<span data-entity="dArr" data-name="DOWNWARDS DOUBLE ARROW">⇓</span>
+<span data-entity="hArr" data-name="LEFT RIGHT DOUBLE ARROW">⇔</span>
+<span data-name="UP DOWN DOUBLE ARROW">⇕</span>
+<span data-name="NORTH WEST DOUBLE ARROW">⇖</span>
+<span data-name="NORTH EAST DOUBLE ARROW">⇗</span>
+<span data-name="SOUTH EAST DOUBLE ARROW">⇘</span>
+<span data-name="SOUTH WEST DOUBLE ARROW">⇙</span>
+<span data-name="LEFTWARDS DASHED ARROW">⇠</span>
+<span data-name="UPWARDS DASHED ARROW">⇡</span>
+<span data-name="RIGHTWARDS DASHED ARROW">⇢</span>
+<span data-name="DOWNWARDS DASHED ARROW">⇣</span>
+<span data-name="LEFTWARDS ARROW TO BAR">⇤</span>
+<span data-name="RIGHTWARDS ARROW TO BAR">⇥</span>
+<span data-name="LEFTWARDS WHITE ARROW">⇦</span>
+<span data-name="UPWARDS WHITE ARROW">⇧</span>
+<span data-name="RIGHTWARDS WHITE ARROW">⇨</span>
+<span data-name="DOWNWARDS WHITE ARROW">⇩</span>
+<span data-name="UPWARDS WHITE ARROW FROM BAR">⇪</span>
+<span data-name="NORTH WEST ARROW TO CORNER">⇱</span>
+<span data-name="SOUTH EAST ARROW TO CORNER">⇲</span>
+<span data-name="UP DOWN WHITE ARROW">⇳</span>
+<span data-name="NORTH EAST WHITE ARROW">⬀</span>
+<span data-name="NORTH WEST WHITE ARROW">⬁</span>
+<span data-name="SOUTH EAST WHITE ARROW">⬂</span>
+<span data-name="SOUTH WEST WHITE ARROW">⬃</span>
+<span data-name="LEFT RIGHT WHITE ARROW">⬄</span>
+<span data-name="LEFTWARDS BLACK ARROW">⬅</span>
+<span data-name="UPWARDS BLACK ARROW">⬆</span>
+<span data-name="DOWNWARDS BLACK ARROW">⬇</span>
+<span data-name="HEAVY WIDE-HEADED RIGHTWARDS ARROW">➔</span>
+<span data-name="HEAVY SOUTH EAST ARROW">➘</span>
+<span data-name="HEAVY RIGHTWARDS ARROW">➙</span>
+<span data-name="HEAVY NORTH EAST ARROW">➚</span>
+<span data-name="DRAFTING POINT RIGHTWARDS ARROW">➛</span>
+<span data-name="HEAVY ROUND-TIPPED RIGHTWARDS ARROW">➜</span>
+<span data-name="TRIANGLE-HEADED RIGHTWARDS ARROW">➝</span>
+<span data-name="HEAVY TRIANGLE-HEADED RIGHTWARDS ARROW">➞</span>
+<span data-name="DASHED TRIANGLE-HEADED RIGHTWARDS ARROW">➟</span>
+<span data-name="HEAVY DASHED TRIANGLE-HEADED RIGHTWARDS ARROW">➠</span>
+<span data-name="BLACK RIGHTWARDS ARROW">➡</span>
+<span data-name="THREE-D TOP-LIGHTED RIGHTWARDS ARROWHEAD">➢</span>
+<span data-name="THREE-D BOTTOM-LIGHTED RIGHTWARDS ARROWHEAD">➣</span>
+<span data-name="BLACK RIGHTWARDS ARROWHEAD">➤</span>
+<span data-name="HEAVY BLACK CURVED DOWNWARDS AND RIGHTWARDS ARROW">➥</span>
+<span data-name="HEAVY BLACK CURVED UPWARDS AND RIGHTWARDS ARROW">➦</span>
+<span data-name="SQUAT BLACK RIGHTWARDS ARROW">➧</span>
+<span data-name="HEAVY CONCAVE-POINTED BLACK RIGHTWARDS ARROW">➨</span>
+<span data-name="RIGHT-SHADED WHITE RIGHTWARDS ARROW">➩</span>
+<span data-name="LEFT-SHADED WHITE RIGHTWARDS ARROW">➪</span>
+<span data-name="HEAVY LOWER RIGHT-SHADOWED WHITE RIGHTWARDS ARROW">➭</span>
+<span data-name="HEAVY UPPER RIGHT-SHADOWED WHITE RIGHTWARDS ARROW">➮</span>
+<span data-name="NOTCHED LOWER RIGHT-SHADOWED WHITE RIGHTWARDS ARROW">➯</span>
+<span data-name="NOTCHED UPPER RIGHT-SHADOWED WHITE RIGHTWARDS ARROW">➱</span>
+<span data-name="CIRCLED HEAVY WHITE RIGHTWARDS ARROW">➲</span>
+<span data-name="WHITE-FEATHERED RIGHTWARDS ARROW">➳</span>
+<span data-name="BLACK-FEATHERED SOUTH EAST ARROW">➴</span>
+<span data-name="BLACK-FEATHERED RIGHTWARDS ARROW">➵</span>
+<span data-name="BLACK-FEATHERED NORTH EAST ARROW">➶</span>
+<span data-name="HEAVY BLACK-FEATHERED SOUTH EAST ARROW">➷</span>
+<span data-name="HEAVY BLACK-FEATHERED RIGHTWARDS ARROW">➸</span>
+<span data-name="HEAVY BLACK-FEATHERED NORTH EAST ARROW">➹</span>
+<span data-name="ANTICLOCKWISE GAPPED CIRCLE ARROW">⟲</span>
+<span data-name="CLOCKWISE GAPPED CIRCLE ARROW">⟳</span>
+<span data-name="RIGHT ARROW WITH CIRCLED PLUS">⟴</span>
+<span data-name="LONG LEFTWARDS ARROW">⟵</span>
+<span data-name="LONG RIGHTWARDS ARROW">⟶</span>
+<span data-name="LONG LEFT RIGHT ARROW">⟷</span>
+<span data-name="LONG LEFTWARDS ARROW FROM BAR">⟻</span>
+<span data-name="LONG RIGHTWARDS ARROW FROM BAR">⟼</span>
+<span data-name="LONG RIGHTWARDS SQUIGGLE ARROW">⟿</span>
+<span data-name="RIGHTWARDS TWO-HEADED ARROW WITH VERTICAL STROKE">⤀</span>
+<span data-name="RIGHTWARDS TWO-HEADED ARROW WITH DOUBLE VERTICAL STROKE">⤁</span>
+<span data-name="LEFTWARDS DOUBLE ARROW WITH VERTICAL STROKE">⤂</span>
+<span data-name="RIGHTWARDS DOUBLE ARROW WITH VERTICAL STROKE">⤃</span>
+<span data-name="LEFT RIGHT DOUBLE ARROW WITH VERTICAL STROKE">⤄</span>
+<span data-name="RIGHTWARDS TWO-HEADED ARROW FROM BAR">⤅</span>
+<span data-name="LEFTWARDS DOUBLE ARROW FROM BAR">⤆</span>
+<span data-name="RIGHTWARDS DOUBLE ARROW FROM BAR">⤇</span>
+<span data-name="DOWNWARDS ARROW WITH HORIZONTAL STROKE">⤈</span>
+<span data-name="UPWARDS ARROW WITH HORIZONTAL STROKE">⤉</span>
+<span data-name="LEFTWARDS DOUBLE DASH ARROW">⤌</span>
+<span data-name="RIGHTWARDS DOUBLE DASH ARROW">⤍</span>
+<span data-name="LEFTWARDS TRIPLE DASH ARROW">⤎</span>
+<span data-name="RIGHTWARDS TRIPLE DASH ARROW">⤏</span>
+<span data-name="RIGHTWARDS TWO-HEADED TRIPLE DASH ARROW">⤐</span>
+<span data-name="RIGHTWARDS ARROW WITH DOTTED STEM">⤑</span>
+<span data-name="UPWARDS ARROW TO BAR">⤒</span>
+<span data-name="DOWNWARDS ARROW TO BAR">⤓</span>
+<span data-name="RIGHTWARDS ARROW WITH TAIL WITH VERTICAL STROKE">⤔</span>
+<span data-name="RIGHTWARDS ARROW WITH TAIL WITH DOUBLE VERTICAL STROKE">⤕</span>
+<span data-name="RIGHTWARDS TWO-HEADED ARROW WITH TAIL">⤖</span>
+<span data-name="RIGHTWARDS TWO-HEADED ARROW WITH TAIL WITH VERTICAL STROKE">⤗</span>
+<span data-name="RIGHTWARDS TWO-HEADED ARROW WITH TAIL WITH DOUBLE VERTICAL STROKE">⤘</span>
+<span data-name="LEFTWARDS ARROW-TAIL">⤙</span>
+<span data-name="RIGHTWARDS ARROW-TAIL">⤚</span>
+<span data-name="LEFTWARDS DOUBLE ARROW-TAIL">⤛</span>
+<span data-name="RIGHTWARDS DOUBLE ARROW-TAIL">⤜</span>
+<span data-name="LEFTWARDS ARROW TO BLACK DIAMOND">⤝</span>
+<span data-name="RIGHTWARDS ARROW TO BLACK DIAMOND">⤞</span>
+<span data-name="LEFTWARDS ARROW FROM BAR TO BLACK DIAMOND">⤟</span>
+<span data-name="RIGHTWARDS ARROW FROM BAR TO BLACK DIAMOND">⤠</span>
+<span data-name="NORTH WEST AND SOUTH EAST ARROW">⤡</span>
+<span data-name="NORTH EAST AND SOUTH WEST ARROW">⤢</span>
+<span data-name="WAVE ARROW POINTING DIRECTLY RIGHT">⤳</span>
+<span data-name="ARROW POINTING RIGHTWARDS THEN CURVING UPWARDS">⤴</span>
+<span data-name="ARROW POINTING RIGHTWARDS THEN CURVING DOWNWARDS">⤵</span>
+<span data-name="ARROW POINTING DOWNWARDS THEN CURVING LEFTWARDS">⤶</span>
+<span data-name="ARROW POINTING DOWNWARDS THEN CURVING RIGHTWARDS">⤷</span>
+<span data-name="RIGHT-SIDE ARC CLOCKWISE ARROW">⤸</span>
+<span data-name="LEFT-SIDE ARC ANTICLOCKWISE ARROW">⤹</span>
+<span data-name="TOP ARC ANTICLOCKWISE ARROW">⤺</span>
+<span data-name="BOTTOM ARC ANTICLOCKWISE ARROW">⤻</span>
+<span data-name="TOP ARC CLOCKWISE ARROW WITH MINUS">⤼</span>
+<span data-name="TOP ARC ANTICLOCKWISE ARROW WITH PLUS">⤽</span>
+<span data-name="LOWER RIGHT SEMICIRCULAR CLOCKWISE ARROW">⤾</span>
+<span data-name="LOWER LEFT SEMICIRCULAR ANTICLOCKWISE ARROW">⤿</span>
+<span data-name="ANTICLOCKWISE CLOSED CIRCLE ARROW">⥀</span>
+<span data-name="CLOCKWISE CLOSED CIRCLE ARROW">⥁</span>
+
+		</section>
+
+		<section class="characters" id="custom">
+			<h1>Custom Characters</h1>
+		</section>
+
+		<section class="characters current" id="tools">
+			<h1>Additional Tools</h1>
+
+            <div id="result">&nbsp;</div>
+			
+			<div>
+				<label for="rounded">Rounded:</label> <input type="text" id="rounded" value="" size="16" />
+			</div>
+            
+			<div>
+				<label for="flip">Flip:</label> <input type="text" id="flip" value="" size="16" />
+			</div>
+
+			<div>
+				<label for="braille">Braille:</label> <input type="text" id="braille" value="" size="16" />
+			</div>
+            
+            <!--
+            leet speak
+            morse
+            braille
+            to revert letters
+            to rounded letters
+            to rounded numbers
+            to rounder black numbers
+            -->
+		</section>
+		
+		<section class="characters current" id="encryption">
+			<h1>Encryption</h1>
+
+            <div id="result">&nbsp;
+            </div>
+			
+            
+            <!--
+            rot13
+            md5
+            -->
+		</section>
+		
+	</article>
+	
+
+	<footer>
+		See <a href="http://www.unicode.org/versions/Unicode6.0.0/">Unicode 6.0</a> and <a href="http://utf8-characters.com/">UTF8 Characters</a>.
+	</footer>
+
+    <script src="js/jquery-1.6.4.min.js" ></script>
+    <script src="js/popup.js" ></script>
+
 </body>
 </html>
