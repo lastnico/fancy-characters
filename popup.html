@@ -2,8 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>utf-8 icons</title>
-        <link rel="stylesheet" href="css/popup.css">
     </head>
 <style>
 body {
@@ -11,37 +9,55 @@ body {
   overflow-x:hidden;
 }
 
-img {
-  margin:5px;
-  border:2px solid black;
-  vertical-align:middle;
-  width:75px;
-  height:75px;
+#characters span {
+	font-size: 			20px;
+	font-weight:		bold;
+	padding:			2px 5px;
+	cursor:				pointer;
 }
+
+#characters span:hover {
+	background-color: 	#dff;
+	border-radius:		5px;
+}
+
 </style>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js" type="text/javascript"></script>
 <script>
 
 $().ready(function() {
-	$("body").append("Toto");
 
-	localStorage['characters'] =  ["$", "£" "®", "©", "Ø", "؟"];
+	localStorage['characters'] = JSON.stringify([ "$", "£", "®", "©", "Ø", "؟" ]);
 
-	var characters = localStorage["characters"];
+	var characters = JSON.parse(localStorage["characters"]);
 
 	for (var i = 0; character = characters[i]; ++i) {
-		$("body").append($("<div></div>").append(character));
+		$("#characters").append($("<span></span>").append(character).click(function() {
+			appendCharacter($(this).text());
+		}));
 	}
 	
 	
+	
 });
+
+function appendCharacter(character) {
+	chrome.tabs.getSelected(null, function(tab) {
+		$("body").append("Clicked on " + character);
+	    chrome.tabs.sendRequest(tab.id, { content : character});
+	});
+}
 </script>
 </head>
 <body>
+
 <div>
-Coucou 2
+	Click on a character to append it to the focused element of the page.
 </div>
+
+<section id="characters">
+</section>
 
 <div>
 See <a href="http://www.unicode.org/versions/Unicode6.0.0/">Unicode 6.0</a>.</div>
