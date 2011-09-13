@@ -2,10 +2,11 @@ body {
 	min-width:		380px;
 	overflow-x:		hidden;
 	font-family: 	'Century Gothic', arial, serif;
+	font-size:		12px;
 }
 
 h1 {
-	font-size: 		29px;
+	font-size: 		22px;
 	color: 			#33608C;
 	font-style: 	normal;
 	font-variant: 	normal;
@@ -14,9 +15,9 @@ h1 {
 }
 
 header div {
-	font-size:		12px;
+	font-size:		11px;
 	color:			#666;
-	
+	text-align: 	center;
 }
 
 ul.tabs {

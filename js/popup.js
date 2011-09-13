@@ -213,6 +213,10 @@ $().ready(function() {
 			
 	});
 	
+	$("footer a").click(function() {
+		chrome.tabs.create({ url: $(this).attr("href")});
+	});
+	
 	/*
 	for (var i = 0; character = characters[i]; ++i) {
 		$("section#misc").append($("<span></span>").append(character).click(function() {
