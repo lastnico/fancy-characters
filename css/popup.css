@@ -37,6 +37,14 @@ ul.tabs li {
 	font-size:			12px;
 }
 
+ul.tabs li[rel=tools] {
+	background-color:	orange;
+}
+
+ul.tabs li[rel=encryption] {
+	background-color:	green;
+}
+
 section.characters {
 	display:			none;
 	font-size: 			20px;
