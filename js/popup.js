@@ -1,5 +1,5 @@
 
-// First initialization
+// TODO First initialization 
 if (! localStorage['characters']) {
 	
 	localStorage['characters'] = JSON.stringify([ ]);
@@ -245,10 +245,12 @@ function prepareSolutionTips(tips) {
 }
 
 $().ready(function() {
+	// TODO !
 	var custom_characters = /*JSON.parse(localStorage["characters"])*/ [];
 
 	$(".result.tools, .result.encryption").emptyResult();
 	
+	// TODO To remove once it will work
 	prepareSolutionTips($("#solution-tips"));
 	
 	$("ul.tabs li").click(function() {
@@ -264,10 +266,9 @@ $().ready(function() {
 	$("#solution").qtip({
 		content: {
 			text: function(api) {
+				prepareSolutionTips($("#solution-tips"));
 				var tips = $("#solution-tips").clone();
-				
-				prepareSolutionTips(tips);
-				
+			
 				return tips;
 			}
 		},
