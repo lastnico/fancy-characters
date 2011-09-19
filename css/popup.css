@@ -6,12 +6,12 @@ body {
 }
 
 h1 {
-	font-size: 		22px;
+	font-size: 		18px;
 	color: 			#33608C;
 	font-style: 	normal;
 	font-variant: 	normal;
 	font-weight: 	normal;
-	margin: 		5px 0 0 5px;
+	margin: 		0 0 0 5px;
 }
 
 header div {
@@ -20,6 +20,21 @@ header div {
 	text-align: 	center;
 }
 
+a:link {
+	
+}
+
+a:hover {
+	color:				#2476bc
+}
+
+a:active {
+	color:				#33608C;
+}
+
+a:visited {
+	color:			blue;
+}
 
 ul.tabs {
 	padding:		0;
@@ -65,33 +80,135 @@ ul.tabs li.current[rel=tools], ul.tabs li.current[rel=encryption] {
 	color:	#cdf2f2;
 }
 
-section.characters {
-	font-size: 			20px;
-	padding:			2px;
-}
-
-section.characters, section#tools, section#encryption {
-	display:			none;
-}
-
-section.current {
-	display:		block !important;
-}
-
-section.characters span {
-	font-weight:		bold;
-	padding:			0 2px;
+.link {
+	text-decoration: 	underline;
+	color:				blue;
 	cursor:				pointer;
+	
 }
 
-section.characters span:hover {
+.link:hover {
+	color:				#2476bc
+}
+
+.link:active {
+	color:				#33608C;
+}
+
+
+article {
+	position: 			relative;
+	height:				380px;
+}
+
+
+section {
+	position:			absolute;
+	top:				0;
+	right:				0;
+	left:				0;
+	display:			none;
+	border:				1px solid #ccc;
+}
+
+
+section#symbols {
+	display:			block;
+}
+
+div.characters {
+	padding:			2px 6px 2px 6px;
+	text-align: 		justify;
+}
+
+.preview {
+	float:				right;	
+	border-left:		1px solid #ccc;
+	border-bottom:		1px solid #ccc;
+	font-size:			55px;
+	width:				60px;
+	min-height:			70px;
+	text-align: 		center;
+	margin:				0 0 5px 5px;
+}
+
+/* TODO Ensure all OSes have the right font selected here */
+div.characters span {
+	font-family: 		'Century Gothic', arial, serif;
+	font-weight:		bold;
+	font-size: 			20px;
+	padding:			2px 2px;
+	cursor:				pointer;
+	color:				#333;
+	line-height: 		25px;
+}
+
+div.characters span:hover {
 	background-color: 	#dff;
 	border-radius:		5px;
 }
 
-section {
-	padding:			5;
-	border:				1px solid #ccc;
+div.characters span:active {
+	color:				#33608C;
+}
+
+
+.tipAdd {
+	vertical-align: 	middle;
+	font-size:			11px;
+}
+
+.tipAdd .character {
+	font-size:			14px;
+}
+
+/**
+ * Custom Characters
+ */
+
+div.characters#custom {
+	min-height: 		150px;
+}
+
+div.characters#favorite {
+	min-height: 		150px;
+}
+
+.link.removeAll {
+	font-size:			11px;
+	float:				right;
+	margin:				5px 5px 0 0;
+}
+
+.link.removeCharacter {
+	padding:			0 0 0 25px;
+	background: 		transparent url(../img/remove.png) no-repeat 10px 50%;
+	color:				red;
+}
+
+.link.removeCharacter:hover {
+	color:				orange;
+}
+
+.link.removeCharacter:active {
+	color:				black;
+}
+
+
+#customCharactersFormBlock {
+	border-bottom:		1px solid #eee;
+	padding:			0 0 5px 0;
+	margin:				0 5px 5px 5px;
+	text-align: 		right;
+}
+
+
+section#various label {
+	font-size:			14px;
+}
+
+.suggestions {
+	font-size:			11px;
 }
 
 
@@ -127,7 +244,8 @@ section .result.empty .void {
  * Tools
  */
 section#tools {
-	padding:			5px 0 15px;
+	padding:			5px 0 5px;
+	margin:				0 0 20px;
 }
 
 section#tools label {
@@ -163,7 +281,8 @@ section#tools #leetSpeakCoding label {
  * Encryption
  */
 section#encryption {
-	padding:			5px 0 15px;
+	padding:			5px 0 5px;
+	margin:				0 0 20px;
 }
 
 section#encryption label {
@@ -180,7 +299,7 @@ section#encryption input[type=text] {
 
 
 footer {
-	margin-top:			5px;
+	margin-top:			10px;
 }
 
 #troubleshootings {
@@ -191,7 +310,10 @@ footer {
 }
 
 #solution {
-	text-decoration: 	underline;
-	color:				blue;
-	cursor:				pointer;
+	line-height: 	normal;	
 }
+
+.changeFont {
+	text-align:		center;
+}
+

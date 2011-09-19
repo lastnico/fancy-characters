@@ -1,13 +1,16 @@
-/*
-chrome.extension.onConnect.addListener(function(port) {
-  port.onMessage.addListener(function(msg) {
-    port.postMessage({counter: msg.counter+1});
-  });
-});
-*/
+var jaiqueray = jQuery.noConflict();
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-	document.activeElement.value = document.activeElement.value + request.content;
+	if (request.action == "insert-character") {
+		document.activeElement.value = document.activeElement.value + request.content;
+	}
+	else if (request.action == "get-font") {
+		sendResponse( { 
+			action : "get-font", 
+			fontFamily: jaiqueray("body").css("fontFamily"),
+			fontSize: jaiqueray("body").css("fontSize")
+		} );
+	}
 	
-	//sendResponse({counter: request.counter+1});
+	
 });

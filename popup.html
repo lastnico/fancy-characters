@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
+	<meta property="og:title" content="Fancy Characters - Chrome Extension"/>
+	<meta property="og:image" content="..."/>
+	<meta property="og:description" content="Insert fancy Unicode Characters easily on webpage. Use Morse, Flipping Text, Leet Speak, Braille, MD5, SHA-1, Rot-13 encoding and many more tools to have fun." />
 	<link rel="stylesheet" href="css/jquery.qtip.min.css" />
 	<link rel="stylesheet" href="css/popup.css" />
 </head>
@@ -15,16 +18,21 @@
 			<li rel="symbols" class="current">Symbols</li>
 			<li rel="math">Math</li>
 			<li rel="shapes">Shapes</li>
-			<li rel="custom">Custom</li>
+			<li rel="various">Custom</li>
 			<li rel="tools">Tools</li>
 			<li rel="encryption">Encryption</li>
 		</ul>
 	</header>
 	
 	<article>
-
-		<section class="characters current" id="symbols">
+		<!-- current -->
+		<section class="current" id="symbols">
+			<div class="preview">&nbsp;</div>
 		
+			<h1>Symbols &amp; Misc</h1>
+		
+			<div class="characters">
+
 <span data-entity="copy" data-name="COPYRIGHT SIGN">©</span>
 <span data-entity="reg" data-name="REGISTERED SIGN">®</span>
 <span>™</span>
@@ -239,9 +247,15 @@
 <span>❜</span>
 <span>❛</span>
 
+</div>
 </section>
 		
-<section class="characters" id="math">
+<section id="math">
+	<div class="preview">&nbsp;</div>
+
+	<h1>Mathematics</h1>
+
+<div class="characters">
 <span data-entity="plusmn" data-name="PLUS-MINUS SIGN">±</span>
 <span data-entity="frac14" data-name="VULGAR FRACTION ONE QUARTER">¼</span>
 <span data-entity="frac12" data-name="VULGAR FRACTION ONE HALF">½</span>
@@ -514,10 +528,16 @@
 <span data-name="UP RIGHT DIAGONAL ELLIPSIS">⋰</span>
 <span data-name="DOWN RIGHT DIAGONAL ELLIPSIS">⋱</span>
 
+</div>
 
-		</section>
-		
-		<section class="characters" id="shapes">
+	</section>
+	
+	<section id="shapes">
+		<div class="preview">&nbsp;</div>
+
+		<h1>Shapes &amp; Arrows</h1>
+
+<div class="characters">
 			
 <span data-name="BLACK SQUARE">■</span>
 <span data-name="WHITE SQUARE">□</span>
@@ -721,108 +741,140 @@
 <span data-name="ANTICLOCKWISE CLOSED CIRCLE ARROW">⥀</span>
 <span data-name="CLOCKWISE CLOSED CIRCLE ARROW">⥁</span>
 
-		</section>
+</div>
+	</section>
 
-		<section class="characters" id="custom">
-			<h1>Define Your Characters Here</h1>
-		</section>
-
-		<section id="tools">
-			<h1>Additional Tools</h1>
-
-            <div class="result tools"></div>
-			
-			<div>
-				<label class="tool" for="rounded">Rounded:</label> <input type="text" id="rounded" value="" size="16" />
-			</div>
-            
-			<div>
-				<label class="tool" for="flip">Flip:</label> <input type="text" id="flip" value="" size="16" />
-			</div>
-
-			<div>
-				<label class="tool" for="braille">Braille:</label> <input type="text" id="braille" value="" size="16" />
-			</div>
-            
-			<div>
-				<label class="tool" for="leetSpeak">Leet Speak:</label> <input type="text" id="leetSpeak" value="" size="16" />
-				<div id="leetSpeakCoding">
-					<label for="leetSpeakCoding">Coding:</label>
-					<input type="radio" name="leetSpeakCoding" id="leetSpeakBasic" value="0" checked="checked" /><label for="leetSpeakBasic">Basic</label>
-					<input type="radio" name="leetSpeakCoding" id="leetSpeakLight" value="1" /><label for="leetSpeakLight">Light</label>
-					<input type="radio" name="leetSpeakCoding" id="leetSpeakMedium" value="2" /><label for="leetSpeakMedium">Medium</label>
-					<input type="radio" name="leetSpeakCoding" id="leetSpeakHigh" value="3" /><label for="leetSpeakHigh">High</label>
-				</div>
-			</div>
-			
-			<div>
-				<label class="tool" for="morse">Morse Code:</label> <input type="text" id="morse" value="" size="16" />
-			</div>
-			
-            <!--
-            to revert letters
-            to rounded letters
-            to rounded numbers
-            to rounder black numbers
-            -->
-		</section>
+	<section id="various">
 		
-		<section id="encryption">
-			<h1>Encryption</h1>
+		<div class="preview">&nbsp;</div>
+		<span class="link removeAll" id="removeCustoms">Remove All</span>
 
-            <div class="result encryption"></div>
-			
-			<div>
-				<label class="tool" for="md5">MD5:</label> <input type="text" id="md5" value="" size="16" />
-			</div>
+		<h1>Custom Characters</h1>
 
-			<div>
-				<label class="tool" for="sha1">SHA-1:</label> <input type="text" id="sha1" value="" size="16" />
-			</div>
-            
-			<div>
-				<label class="tool" for="rot13"><a href="http://en.wikipedia.org/wiki/ROT13">ROT-13</a>:</label> <input type="text" id="rot13" value="" size="16" />
-			</div>
-			
-		</section>
+		<div class="characters" id="custom">
+		</div>
 		
-	</article>
+		<div id="customCharactersFormBlock">
+			<form action="" id="customCharactersForm">
+				<label class="tool" for="newCharacters">Add: </label> <input type="text" id="newCharacters" value="" size="5" />
+				<span class="suggestions">See <a href="http://utf8-characters.com/" title="See Suggestions at UTF8 Characters">Suggestions</a>...</span>
+				
+			</form>
+		</div>
+		
+		<span class="link removeAll" id="removeFavorites">Remove All</span>
+		<h1>Favorites</h1>
+		<div class="characters" id="favorite">
+		</div>
+			
+	</section>
+
+	<section id="tools">
+		<h1>Additional Tools</h1>
+
+           <div class="result tools"></div>
+		
+		<div>
+			<label class="tool" for="rounded">Rounded:</label> <input type="text" id="rounded" value="" size="16" />
+		</div>
+           
+		<div>
+			<label class="tool" for="flip">Flip:</label> <input type="text" id="flip" value="" size="16" />
+		</div>
+
+		<div>
+			<label class="tool" for="braille">Braille:</label> <input type="text" id="braille" value="" size="16" />
+		</div>
+           
+		<div>
+			<label class="tool" for="leetSpeak">Leet Speak:</label> <input type="text" id="leetSpeak" value="" size="16" />
+			<div id="leetSpeakCoding">
+				<label for="leetSpeakCoding">Coding:</label>
+				<input type="radio" name="leetSpeakCoding" id="leetSpeakBasic" value="0" checked="checked" /><label for="leetSpeakBasic">Basic</label>
+				<input type="radio" name="leetSpeakCoding" id="leetSpeakLight" value="1" /><label for="leetSpeakLight">Light</label>
+				<input type="radio" name="leetSpeakCoding" id="leetSpeakMedium" value="2" /><label for="leetSpeakMedium">Medium</label>
+				<input type="radio" name="leetSpeakCoding" id="leetSpeakHigh" value="3" /><label for="leetSpeakHigh">High</label>
+			</div>
+		</div>
+		
+		<div>
+			<label class="tool" for="morse">Morse Code:</label> <input type="text" id="morse" value="" size="16" />
+		</div>
+		
+           <!--
+           to revert letters
+           to rounded letters
+           to rounded numbers
+           to rounder black numbers
+           -->
+	</section>
+	
+	<section id="encryption">
+		<h1>Encryption</h1>
+
+           <div class="result encryption"></div>
+		
+		<div>
+			<label class="tool" for="md5">MD5:</label> <input type="text" id="md5" value="" size="16" />
+		</div>
+
+		<div>
+			<label class="tool" for="sha1">SHA-1:</label> <input type="text" id="sha1" value="" size="16" />
+		</div>
+           
+		<div>
+			<label class="tool" for="rot13"><a href="http://en.wikipedia.org/wiki/ROT13">ROT-13</a>:</label> <input type="text" id="rot13" value="" size="16" />
+		</div>
+		
+	</section>
+		
+</article>
 	
 
 	<footer>
 		<div id="troubleshootings">
-			Do you have ugly symbols ▢ or � in your list? See <span id="solution">Solutions</span>...
+			Do you have ugly ▢ or � symbols in this list? See <span id="solution" class="link">Solutions</span>...
 		</div>
 		
-		<!--  style="display: none" -->
-		<div id="solution-tips">
+		<div id="solution-tips" style="display: none">
 			<p>
-			The font <span class="currentFont"></span> you are using probably does not support all Unicode characters.
+				This Chrome Extension relies on the default font installed on your computer and those the current site you are 
+				browsing is selecting.
 			</p>
+			
 			<p>
-			Maybe you should try an alternative font:
-				<select>
-					<option value="toto">Toto</option>
-					<option value="toto1">Tata</option>
-					<option value="toto2">Font Family</option>
-				</select>
+			This extension currently uses the following fonts:
+			</p>
+			
+			<div class="link changeFont currentFont"></div>
+			
+			<p>
+			... while this website uses:
+			</p>
+
+			<div class="link changeFont websiteFont"></div>
+			
+			<p>
+			Select one of these fonts to preview which symbols are supported.
 			</p>
 		</div>
 	
 		<div style="float: right">
 			<a id="twitter" href="http://twitter.com/forumsoftware"><img src="/img/twitter.png" /></a>
-			<g:plusone size="small" href="https://chrome.google.com/webstore?category=ext"></g:plusone>
+			<g:plusone size="small" href="http://lastnico.github.com/fancy-characters/"></g:plusone>
 			
-			<a id="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CSGL5KYQ4AQPN"><img src="/img/donate.png"></a>
+			<a id="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7XB456TB4F24J"><img src="/img/donate.png"></a>
 			<a id="email" href="mailto:nicolas.ternisien@gmail.com?subject=Fancy%20Characters"><img src="/img/email.png"></a>
 		</div>
 		
-		See <a href="http://www.unicode.org/versions/Unicode6.0.0/">Unicode 6.0</a> &amp; <a href="http://utf8-characters.com/">UTF8 Characters</a>.
+		<a href="http://lastnico.github.com/fancy-characters/">Fancy Characters</a> &amp;
+		<a href="http://www.unicode.org/versions/Unicode6.0.0/">Unicode 6.0</a>.
 	</footer>
 
     <script src="js/jquery-1.6.4.min.js" ></script>
     <script src="js/jquery.qtip.min.js" ></script>
-    <script src="js/popup.js" ></script>
+    <script src="js/tools.js"></script>
+    <script src="js/popup.js"></script>
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 
 </body>
