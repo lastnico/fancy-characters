@@ -1,7 +1,58 @@
+README
+-----------------
+
+Welcome to Fancy Characters Chrome Extension source tree!
+
+Fancy Characters is a perfect extension for symbols and logos lovers, available on most computers and websites, 
+but never used due to the difficulty to reach them with a standard keyboard. 
+
+It provides list of most used and interesting Unicode characters, which could be inserted with a single click in 
+all websites input and textareas. Available sections are: Symbols (smileys ☺ ☻ ☹ ☃ ☠, weather ☄ ☽ ☼ ☀ ☁, sym
+bols ♽ ♻ ♫ ♩ ♪ ♿ ♀ ♂ ✈ ☎, greek glyphs ♉ ♊ ♋ ♌ ♍ ♎ ♏, chess ♕ ♖ ♗ ♘ ♙, Maths ± ¼ ½ ¾ ⅓ ⨛ ⨜ ♇ ♈ ♉ ≃ ≄, Shapes ● 
+◐◑ ◒ ◓ ◔ ➞ ➟ ➠ ➡ ➤ ↸ ↹ ↺ ↻ ⇋... and many more! A fourth Custom section lets you personalize your own list of 
+favorite symbols.
+
+- Convert text (no images, just different letters) to funny formats: flipped text ʇxǝʇ pǝddılɟ
+, rounded letters ⓡⓞⓤⓝⓓⓔⓓ ⓛⓔⓣⓣⓔⓡⓢ,...
+
+- Use additional converters: Braille ⠨⠁ ⠎⠍⠁⠇⠇ ⠞⠑⠎⠞, Leet Speak L33t 5p34k and even Morse ... ___ ....
+
+- And finally, for encryption lovers, a quick way to check MD5, SHA-1 and ROT-13 of text snippets.
+
+CHANGELOG
+-----------------
+
+v0.8.2
+---------------
+ - Fix tabs on Windows
+
+v0.8.1
+---------------
+ - First Official Version
+ - Fix spacing, margin and displaying of characters in boxes
+ - Add a Preview box on the top right corner
+ - Add a 'Remove this character' tooltip on each custom character
+
+v0.8
+---------------
+ - First private version
+
+
 
 TODO 
+-----------------
  - Add http://utf8-characters.com/mathematical-alphanumeric-symbols/#dotless-symbols ?
  - Add a select all on Tools/Encryption section for results (and an Insert button)
  - Highlight the field we just inserted a character in
  - Sort Favorites using usage
- 
+
+
+CREDITS
+-----------------
+
+If you have questions, it's better to ask them to Fancy Characters main
+author, Nicolas Ternisien <nicolas.ternisien@gmail.com>
+
+WebPrism Consulting scs
+http://www.forum-software.org/about
+

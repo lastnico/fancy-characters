@@ -1,6 +1,6 @@
 {
   "name": "Fancy Characters",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Copy/Paste list of Fancy Characters. Convert words to Leet Speak, Morse, Braille, flipped text...",
   "browser_action": {
     "default_icon": "icon.png",
