@@ -1,4 +1,4 @@
-README
+ README
 -----------------
 
 Welcome to Fancy Characters Chrome Extension source tree!
@@ -19,37 +19,18 @@ favorite symbols.
 
 - And finally, for encryption lovers, a quick way to check MD5, SHA-1 and ROT-13 of text snippets.
 
-CHANGELOG
------------------
 
-v0.8.2
----------------
- - Fix tabs on Windows
-
-v0.8.1
----------------
- - First Official Version
- - Fix spacing, margin and displaying of characters in boxes
- - Add a Preview box on the top right corner
- - Add a 'Remove this character' tooltip on each custom character
-
-v0.8
----------------
- - First private version
-
-
-
-TODO 
+ TODO 
 -----------------
  - Add http://utf8-characters.com/mathematical-alphanumeric-symbols/#dotless-symbols ?
  - Add a select all on Tools/Encryption section for results (and an Insert button)
+ - Support TinyMCE, CKEditor?, Google+ div textarea,...
 
-
-CREDITS
+ CREDITS
 -----------------
 
-If you have questions, it's better to ask them to Fancy Characters main
-author, Nicolas Ternisien <nicolas.ternisien@gmail.com>
+If you have any questions, it's better to ask them directly to Fancy Characters main
+author, Nicolas Ternisien <nicolas.ternisien@gmail.com>.
 
 WebPrism Consulting scs
 http://www.forum-software.org/about
