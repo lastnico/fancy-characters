@@ -1,7 +1,8 @@
 {
-  "name": "Fancy Characters",
+  "name": "__MSG_name__",
   "version": "0.9.1",
-  "description": "Extend your keyboard with hundred of nice Unicode characters (☺ © ♨ ♡...) in forms of every website. Tools to convert words to Flipped ʇxǝʇ, Rounded ⓣⓔⓧⓣ, Leet 5P34K, Morse,...",
+  "description": "__MSG_description__",
+  "default_locale": "en",
   "browser_action": {
     "default_icon": "icon.png",
 	"popup": "popup.html"

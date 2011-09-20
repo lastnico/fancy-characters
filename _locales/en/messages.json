@@ -1,0 +1,32 @@
+{
+	"name" : {
+		"message" : 	"Fancy Characters",
+		"description":	"Extension Name"
+	},
+	"description" : {
+		"message" : "Extend your keyboard with hundred of nice Unicode characters (☺ © ♨ ♡…) in forms of every website. Tools to convert words to Flipped ʇxǝʇ, Rounded ⓣⓔⓧⓣ, Leet 5P34K, Morse,...",
+		"description":	"Extension Description"
+	},
+	"instructions" : {
+		"message" : "Click to insert a character at the current cursor position."
+	},
+	"tab_symbols" : {
+		"message" : "Symbols"
+	},
+	"tab_math" : {
+		"message" : "Math"
+	},
+	"tab_shapes" : {
+		"message" : "Shapes"
+	},
+	"tab_various" : {
+		"message" : "Custom"
+	},
+	"tab_encryption" : {
+		"message" : "Encryption"
+	},
+	"tab_tools" : {
+		"message" : "Tools"
+	}
+	
+}

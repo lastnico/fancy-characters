@@ -1,0 +1,33 @@
+{
+	"name" : {
+		"message" : 	"Caractères Fantaisistes",
+		"description":	"Extension Name"
+	},
+	"description" : {
+		"message" : "Améliore votre clavier en lui ajoutant des centaines de caractères Unicode (☺ © ♨ ♡…), à ajouter dans tous les formulaires de site Internet. Outils de conversion de texte à sɹǝʌuǝ,l, ⓐⓡⓡⓞⓝⓓⓘ, d'un mode Leet 5P34K, du Morse,...",
+		"description":	"Extension Description"
+	},
+	"instructions" : {
+		"message" : "Cliquez pour insérer un caractère à la position courante du curseur."
+	},
+	"tab_symbols" : {
+		"message" : "Symboles"
+	},
+	"tab_math" : {
+		"message" : "Maths"
+	},
+	"tab_shapes" : {
+		"message" : "Formes"
+	},
+	"tab_various" : {
+		"message" : "Perso."
+	},
+	"tab_encryption" : {
+		"message" : "Cryptage"
+	},
+	"tab_tools" : {
+		"message" : "Outils"
+	}
+	
+	
+}

@@ -47,6 +47,8 @@ var SYMBOL_FONT_SIZE;
 
 $().ready(function() {
 	
+	l10n();
+	
 	var currentTab = localStorage["currentTab"] || "symbols";
 	$("ul.tabs li[rel=" + currentTab + "]").addClass("current");
 	$("section#" + currentTab).addClass('current').show();
@@ -404,12 +406,21 @@ function hideTips() {
 	$('.qtip.ui-tooltip').qtip('hide');
 }
 
+function l10n() {
+	$("#instructions").text(chrome.i18n.getMessage("instructions"));
+	$("ul.tabs li").text(function(index) {
+		return chrome.i18n.getMessage("tab_" + $(this).attr("rel"));
+	});
+}
+
 function getCustoms() {
 	if (! localStorage['customCharacters'])
 		return "";
 	else
 		return localStorage['customCharacters'];
 }
+
+
 
 function Favorites() {
 	if (! localStorage['favoriteCharacters'])
