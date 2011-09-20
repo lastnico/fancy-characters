@@ -20,20 +20,22 @@ header div {
 	text-align: 	center;
 }
 
-a:link {
-	
+a, a:link, .link {
+	text-decoration: 	underline;
+	color:				#2476bc;
+	cursor:				pointer;	
 }
 
-a:hover {
-	color:				#2476bc
+a:hover, .link:hover {
+	color:				blue;
 }
 
-a:active {
+a:active, .link:active {
 	color:				#33608C;
 }
 
 a:visited {
-	color:			blue;
+	color:				#2476bc;
 }
 
 ul.tabs {
@@ -80,27 +82,13 @@ ul.tabs li.current[rel=tools], ul.tabs li.current[rel=encryption] {
 	color:	#cdf2f2;
 }
 
-.link {
-	text-decoration: 	underline;
-	color:				blue;
-	cursor:				pointer;
-	
-}
-
-.link:hover {
-	color:				#2476bc
-}
-
-.link:active {
-	color:				#33608C;
-}
-
-
 article {
+}
+
+#sections {
 	position: 			relative;
 	height:				380px;
 }
-
 
 section {
 	position:			absolute;
@@ -109,11 +97,6 @@ section {
 	left:				0;
 	display:			none;
 	border:				1px solid #ccc;
-}
-
-
-section#symbols {
-	display:			block;
 }
 
 div.characters {
@@ -137,19 +120,20 @@ div.characters span {
 	font-family: 		'Century Gothic', arial, serif;
 	font-weight:		bold;
 	font-size: 			20px;
-	padding:			2px 2px;
+	padding:			2px 3px;
 	cursor:				pointer;
 	color:				#333;
 	line-height: 		25px;
 }
 
 div.characters span:hover {
-	background-color: 	#dff;
+	background-color: 	#f7ef54;
 	border-radius:		5px;
+	-webkit-transition:	background-color 0.3s ease-in;
 }
 
 div.characters span:active {
-	color:				#33608C;
+	color:				red;
 }
 
 
@@ -204,7 +188,7 @@ div.characters#favorite {
 
 
 section#various label {
-	font-size:			14px;
+	font-size:			12px;
 }
 
 .suggestions {
@@ -218,8 +202,10 @@ section .result {
 	padding:			5px 10px;
 	border:				1px solid #eee;
 	background-color:	#eff9f9;
-	min-height: 		22px;
 	margin:				5px 0 10px;
+	min-height: 		22px;
+	max-height: 		160px;
+	overflow: 			scroll;
 }
 
 section .result.empty {
@@ -251,7 +237,7 @@ section#tools {
 section#tools label {
 	display:			inline-block;
 	width:				25%;
-	font-size:			14px;
+	font-size:			13px;
 	text-align: 		right;
 }
 
@@ -299,7 +285,7 @@ section#encryption input[type=text] {
 
 
 footer {
-	margin-top:			10px;
+	margin-top:			5px;
 }
 
 #troubleshootings {
@@ -310,7 +296,11 @@ footer {
 }
 
 #solution {
-	line-height: 	normal;	
+	color:			#666;	
+}
+
+#solution:hover {
+	color:			#2476bc;
 }
 
 .changeFont {

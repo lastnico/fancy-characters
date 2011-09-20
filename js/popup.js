@@ -1,13 +1,18 @@
 
-
 (function( $ ){
 	$.fn.emptyResult = function() {
 		this.empty().html("<div class='void'>ø</div> Type something on the desired field below...</div>").addClass("empty");
 		return this;
 	};
 	
-	$.fn.withResult = function() {
+	$.fn.withResult = function(content) {
 		this.empty().removeClass("empty");
+		if (content) {
+			this.html(content);
+		}
+		
+		resizeSections();
+
 		return this;
 	};
 	
@@ -37,34 +42,16 @@
 
 })(jQuery);
 
-function fontPreview(element, currentFontFamily, currentFontSize) {
-	element.empty();
-	
-	var text = currentFontFamily + " (" + currentFontSize + ")";
-	element.text(text)
-		.css("fontFamily", currentFontFamily)
-		.css("fontSize", currentFontSize);
-}
-
-function prepareSolutionTips(tips) {
-
-	fontPreview(tips.find(".currentFont"), SYMBOL_FONT_FAMILY, SYMBOL_FONT_SIZE);
-	
-	chrome.tabs.getSelected(null, function(tab) {
-		chrome.tabs.sendRequest(tab.id, { action: "get-font"}, function(response) {
-	    	fontPreview($(".websiteFont"), response.fontFamily, response.fontSize);
-		});
-	});
-	
-}
-
 var SYMBOL_FONT_FAMILY;
 var SYMBOL_FONT_SIZE;
 
 $().ready(function() {
-	var height = parseInt($("section#symbols").css("height").replace("px", "")) + 5;
-    $("article").css("height", height + "px");
-
+	
+	var currentTab = localStorage["currentTab"] || "symbols";
+	$("ul.tabs li[rel=" + currentTab + "]").addClass("current");
+	$("section#" + currentTab).addClass('current').show();
+	resizeSections();
+	
 	$(".result.tools, .result.encryption").emptyResult();
 	
 	refreshFavoriteCharacters();
@@ -83,8 +70,9 @@ $().ready(function() {
 		
 		$(this).addClass('current');
         $("section#" + sectionId).addClass('current').fadeIn();
-        var height = parseInt($("section#" + sectionId).css("height").replace("px", "")) + 5;
-        $("article").animate({ "height" : height + "px"  }, 'slow');
+        resizeSections();
+        
+        localStorage["currentTab"] = sectionId;
 	});
 	
 	$("#solution").qtip({
@@ -105,7 +93,7 @@ $().ready(function() {
 		},
 		hide: {
 			fixed: true,
-			delay: 1000,
+			delay: 400,
 		}
 	});
 
@@ -198,7 +186,7 @@ $().ready(function() {
 		
 		var result = toFlip(value);
 
-		$(".result.tools").withResult().html(result);
+		$(".result.tools").withResult(result);
 	});
 
 	$("#braille").bind("click keyup", function() {
@@ -211,7 +199,7 @@ $().ready(function() {
 		
 		var result = toBraille(value);
 
-		$(".result.tools").withResult().html(result);
+		$(".result.tools").withResult(result);
 	});
 
 	$("#morse").bind("click keyup", function() {
@@ -224,7 +212,7 @@ $().ready(function() {
 		
 		var result = toMorse(value);
 
-		$(".result.tools").withResult().html(result);
+		$(".result.tools").withResult(result);
 	});
 
 	$("#rounded").bind("click keyup", function() {
@@ -237,7 +225,7 @@ $().ready(function() {
 		
 		var result = toRounded(value);
 
-		$(".result.tools").withResult().html(result);
+		$(".result.tools").withResult(result);
 			
 	});
 
@@ -251,7 +239,7 @@ $().ready(function() {
 		
 		var result = toMd5(value);
 
-		$(".result.encryption").withResult().html(result);
+		$(".result.encryption").withResult(result);
 			
 	});
 
@@ -265,7 +253,7 @@ $().ready(function() {
 		
 		var result = toSha1(value);
 
-		$(".result.encryption").withResult().html(result);
+		$(".result.encryption").withResult(result);
 			
 	});
 
@@ -279,7 +267,7 @@ $().ready(function() {
 		
 		var result = toRot13(value);
 
-		$(".result.encryption").withResult().html(result);
+		$(".result.encryption").withResult(result);
 			
 	});
 	
@@ -293,6 +281,36 @@ $().ready(function() {
 	
 	
 });
+
+
+function fontPreview(element, currentFontFamily, currentFontSize) {
+	element.empty();
+	
+	var text = currentFontFamily + " (" + currentFontSize + ")";
+	element.text(text)
+		.css("fontFamily", currentFontFamily)
+		.css("fontSize", currentFontSize);
+}
+
+function prepareSolutionTips(tips) {
+
+	fontPreview(tips.find(".currentFont"), SYMBOL_FONT_FAMILY, SYMBOL_FONT_SIZE);
+	
+	chrome.tabs.getSelected(null, function(tab) {
+		chrome.tabs.sendRequest(tab.id, { action: "get-font"}, function(response) {
+	    	fontPreview($(".websiteFont"), response.fontFamily, response.fontSize);
+		});
+	});
+	
+}
+
+function resizeSections() {
+    var height = $("section.current").outerHeight();
+    
+    if (height != $("#sections").height()) {
+    	$("#sections").stop(true).animate({ "height" : height + "px"  }, 'slow');
+    }
+} 
 
 
 function removeCustomCharacter() {
@@ -418,12 +436,11 @@ function refreshLeetSpeakResult() {
 	
 	var result = toLeetSpeak(value, $("#leetSpeakCoding :radio:checked").val());
 
-	$(".result.tools").withResult().html(result);
+	$(".result.tools").withResult(result);
 }
 
 function appendCharacter(character) {
 	chrome.tabs.getSelected(null, function(tab) {
-		//$("body").append("Clicked on " + character);
 	    chrome.tabs.sendRequest(tab.id, { action: "insert-character", content : character});
 	});
 	

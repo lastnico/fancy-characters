@@ -2,36 +2,38 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta property="og:title" content="Fancy Characters - Chrome Extension"/>
-	<meta property="og:image" content="..."/>
+	<meta property="og:title" content="Fancy Characters - Chrome Extension" />
+	<meta property="og:image" content="http://lastnico.github.com/fancy-characters/icon128.png" />
 	<meta property="og:description" content="Insert fancy Unicode Characters easily on webpage. Use Morse, Flipping Text, Leet Speak, Braille, MD5, SHA-1, Rot-13 encoding and many more tools to have fun." />
 	<link rel="stylesheet" href="css/jquery.qtip.min.css" />
 	<link rel="stylesheet" href="css/popup.css" />
 </head>
 <body>
-	<header>
-		<div>
-			Click to append a character to the focused element of the page.
-		</div>
-		
-		<ul class="tabs">
-			<li rel="symbols" class="current">Symbols</li>
-			<li rel="math">Math</li>
-			<li rel="shapes">Shapes</li>
-			<li rel="various">Custom</li>
-			<li rel="tools">Tools</li>
-			<li rel="encryption">Encryption</li>
-		</ul>
-	</header>
+
+<header>
+	<div>
+		Click to insert a character at the current cursor position.
+	</div>
 	
-	<article>
-		<!-- current -->
-		<section class="current" id="symbols">
-			<div class="preview">&nbsp;</div>
-		
-			<h1>Symbols &amp; Misc</h1>
-		
-			<div class="characters">
+	<ul class="tabs">
+		<li rel="symbols">Symbols</li>
+		<li rel="math">Math</li>
+		<li rel="shapes">Shapes</li>
+		<li rel="various">Custom</li>
+		<li rel="tools">Tools</li>
+		<li rel="encryption">Encryption</li>
+	</ul>
+</header>
+	
+<article>
+<div id="sections">
+	
+	<section id="symbols">
+		<div class="preview">&nbsp;</div>
+	
+		<h1>Symbols &amp; Misc</h1>
+	
+		<div class="characters">
 
 <span data-entity="copy" data-name="COPYRIGHT SIGN">©</span>
 <span data-entity="reg" data-name="REGISTERED SIGN">®</span>
@@ -757,12 +759,12 @@
 		<div id="customCharactersFormBlock">
 			<form action="" id="customCharactersForm">
 				<label class="tool" for="newCharacters">Add: </label> <input type="text" id="newCharacters" value="" size="5" />
-				<span class="suggestions">See <a href="http://utf8-characters.com/" title="See Suggestions at UTF8 Characters">Suggestions</a>...</span>
+				<span class="suggestions">See <a href="http://utf8-characters.com/" title="See Suggestions at UTF8 Characters">Suggestions...</a></span>
 				
 			</form>
 		</div>
 		
-		<span class="link removeAll" id="removeFavorites">Remove All</span>
+		<span class="link removeAll" id="removeFavorites">Reset</span>
 		<h1>Favorites</h1>
 		<div class="characters" id="favorite">
 		</div>
@@ -828,6 +830,7 @@
 		
 	</section>
 		
+</div>
 </article>
 	
 
@@ -860,15 +863,15 @@
 		</div>
 	
 		<div style="float: right">
-			<a id="twitter" href="http://twitter.com/forumsoftware"><img src="/img/twitter.png" /></a>
+			<a id="twitter" href="http://twitter.com/forumsoftware" title="Get Latest News About Fancy Characters."><img src="/img/twitter.png" alt="Twitter" /></a>
 			<g:plusone size="small" href="http://lastnico.github.com/fancy-characters/"></g:plusone>
 			
-			<a id="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7XB456TB4F24J"><img src="/img/donate.png"></a>
-			<a id="email" href="mailto:nicolas.ternisien@gmail.com?subject=Fancy%20Characters"><img src="/img/email.png"></a>
+			<a id="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7XB456TB4F24J" title="You like Fancy Characters? Donations are always welcome ☺."><img src="/img/donate.png"></a>
+			<a id="email" href="mailto:nicolas.ternisien@gmail.com?subject=Fancy%20Characters" title="Contact Author: Nicolas Ternisien."><img src="/img/email.png" alt="Email" /></a>
 		</div>
 		
 		<a href="http://lastnico.github.com/fancy-characters/">Fancy Characters</a> &amp;
-		<a href="http://www.unicode.org/versions/Unicode6.0.0/">Unicode 6.0</a>.
+		<a href="http://www.unicode.org/versions/Unicode6.0.0/">Unicode</a>.
 	</footer>
 
     <script src="js/jquery-1.6.4.min.js" ></script>
