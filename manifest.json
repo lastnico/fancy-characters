@@ -1,7 +1,7 @@
 {
   "name": "Fancy Characters",
-  "version": "0.8.2",
-  "description": "Copy/Paste list of Fancy Characters. Convert words to Leet Speak, Morse, Braille, flipped text...",
+  "version": "0.9.1",
+  "description": "Extend your keyboard with hundred of nice Unicode characters (☺ © ♨ ♡...) in forms of every website. Tools to convert words to Flipped ʇxǝʇ, Rounded ⓣⓔⓧⓣ, Leet 5P34K, Morse,...",
   "browser_action": {
     "default_icon": "icon.png",
 	"popup": "popup.html"

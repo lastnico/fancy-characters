@@ -206,7 +206,7 @@ section .result {
 	margin:				5px 0 10px;
 	min-height: 		22px;
 	max-height: 		160px;
-	overflow: 			scroll;
+	overflow: 			auto;
 }
 
 section .result.empty {

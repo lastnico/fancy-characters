@@ -54,7 +54,7 @@ $().ready(function() {
 	
 	$(".result.tools, .result.encryption").emptyResult();
 	
-	refreshFavoriteCharacters();
+	new Favorites().refreshBlock();
 	refreshCustomCharacters();
 	
 	SYMBOL_FONT_FAMILY = $("div.characters span").css("font-family");
@@ -141,8 +141,9 @@ $().ready(function() {
 	});
 
 	$("#removeFavorites").click(function() {
-		localStorage['favoriteCharacters'] = JSON.stringify( { } );
-		refreshFavoriteCharacters();
+		var favorites = new Favorites();
+		favorites.empty();
+		favorites.store();
 	});
 	
 	$("section#tools label.tool").qtip({
@@ -374,59 +375,6 @@ function refreshCustomCharacters() {
 
 }
 
-function refreshFavoriteCharacters() {
-	var favorites = getFavorites();
-
-	$(".characters#favorite").empty();
-	
-	// TODO Limit to 60 characters
-	// TODO Sort by total usage
-	for (character in favorites) {
-		var spanCharacter = $("<span></span>").attr("rel", character).text(character)
-			.qtip({
-				content: {
-					text: function(api) {
-						var favorites = getFavorites();
-						var usage = 1;
-						if (favorites[$(this).text()]) {
-							usage = favorites[$(this).text()];
-						}
-						
-						var usageString;
-						if (usage == 1) {
-							usageString = "once";
-						}
-						else if (usage == 2) {
-							usageString = "twice";
-						}
-						else {
-							usageString = usage + " times";
-						}
-						
-						var tip = $("<div></div>").addClass("tipAdd").append("Insert <span class='character'>" + $(this).text() + "</span>")
-							.append(" <strong>(used " + usageString + ")</strong>.");
-						
-						return tip;
-					}
-				},
-				show: {
-					delay: 750
-				},
-				position: {
-					my: 'center left',
-					at: 'center right',
-					viewport: $("article")
-				},
-				style: {
-					classes: 'ui-tooltip-shadow ui-tooltip-rounded'
-				},
-			});
-		
-		$(".characters#favorite").append(spanCharacter).append(" ");
-	}
-		
-}
-
 function refreshLeetSpeakResult() {
 	var value = $("#leetSpeak").val();
 
@@ -445,17 +393,9 @@ function appendCharacter(character) {
 	    chrome.tabs.sendRequest(tab.id, { action: "insert-character", content : character});
 	});
 	
-	var favorites = getFavorites();
-	if (favorites[character]) {
-		var usage = favorites[character];
-		favorites[character] = usage + 1;
-	}
-	else {
-		favorites[character] = 1;
-	}
-	
-	localStorage['favoriteCharacters'] = JSON.stringify(favorites);
-	refreshFavoriteCharacters();
+	var favorites = new Favorites();
+	favorites.useCharacter(character);
+	favorites.store();
 	
 	hideTips();
 }
@@ -470,18 +410,111 @@ function getCustoms() {
 	else
 		return localStorage['customCharacters'];
 }
-		
-function getFavorites() {
-	var favorites;
+
+function Favorites() {
 	if (! localStorage['favoriteCharacters'])
-		favorites = {};
+		this.favorites = [ ];
 	else {
 		try {
-			favorites = JSON.parse(localStorage['favoriteCharacters']);
+			this.favorites = JSON.parse(localStorage['favoriteCharacters']);
+			
+			// Compatibility with old stored data
+			if (! (this.favorites instanceof Array)) {
+				this.favorites = [];
+			}
 		} catch(e) {
-			favorites = {};
+			this.favorites = [ ];
+		}
+	}
+
+}
+
+Favorites.prototype.find = function(character) {
+	for (var index = 0; index < this.favorites.length; ++index) {
+		var favorite = this.favorites[index];
+		
+		if (favorite.character == character) {
+			return favorite;
 		}
 	}
 	
-	return favorites;
-}
+	return null;
+};
+
+Favorites.prototype.useCharacter = function(character) {
+	var favorite = this.find(character);
+	if (favorite) {
+		favorite.usage = favorite.usage + 1;
+	}
+	else {
+		this.favorites.push( { "character" : character, "usage" : 1} );
+	}
+	
+	// Never store more than 60 elements
+	while (this.favorites.length > 60) {
+		this.favorites.pop();
+	}
+	
+	// Sort
+	this.favorites.sort(function(a,b) {
+		return b["usage"] - a["usage"];
+	});
+
+};
+
+Favorites.prototype.store = function() {
+	localStorage['favoriteCharacters'] = JSON.stringify(this.favorites);
+	this.refreshBlock();
+};
+
+Favorites.prototype.datas = function() {
+	return this.favorites;
+};
+
+Favorites.prototype.empty = function() {
+	this.favorites = [];
+};
+
+Favorites.prototype.refreshBlock = function() {
+	$(".characters#favorite").empty();
+	
+	for (var index = 0; index < this.favorites.length; ++index) {
+		var favorite = this.favorites[index]; 
+		var character = favorite.character;
+		var usage = favorite.usage;
+
+		var usageString;
+		if (usage == 1) {
+			usageString = "once";
+		}
+		else if (usage == 2) {
+			usageString = "twice";
+		}
+		else {
+			usageString = usage + " times";
+		}
+
+		
+		var spanCharacter = $("<span></span>").text("" + character)
+			.qtip({
+				content: {
+					text: $("<div></div>").addClass("tipAdd").append("Insert <span class='character'>" + character + "</span>")
+							.append(" <strong>(used " + usageString + ")</strong>.")
+				},
+				show: {
+					delay: 750
+				},
+				position: {
+					my: 'center left',
+					at: 'center right',
+					viewport: $("article")
+				},
+				style: {
+					classes: 'ui-tooltip-shadow ui-tooltip-rounded'
+				},
+			});
+		
+		$(".characters#favorite").append(spanCharacter).append(" ");
+	}
+		
+};
