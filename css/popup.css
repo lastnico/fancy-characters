@@ -65,16 +65,17 @@ ul.tabs li.current {
 }
 
 ul.tabs li[rel=tools] {
-	margin-left:		20px;
 	background-color:	#2a86d1;
 	color:				#fff;
 	font-weight:		bold;
+	float:				right;
 }
 
 ul.tabs li[rel=encryption] {
 	background-color:	#2a86d1;
 	color:				#fff;
 	font-weight:		bold;
+	float:				right;
 }
 
 ul.tabs li[rel=tools]:hover, ul.tabs li[rel=encryption]:hover,
@@ -104,16 +105,6 @@ div.characters {
 	text-align: 		justify;
 }
 
-.preview {
-	float:				right;	
-	border-left:		1px solid #ccc;
-	border-bottom:		1px solid #ccc;
-	font-size:			55px;
-	width:				60px;
-	min-height:			70px;
-	text-align: 		center;
-	margin:				0 0 5px 5px;
-}
 
 /* TODO Ensure all OSes have the right font selected here */
 div.characters span {
@@ -127,7 +118,7 @@ div.characters span {
 }
 
 div.characters span:hover {
-	background-color: 	#f7ef54;
+	background-color: 	#ffff99;
 	border-radius:		5px;
 	-webkit-transition:	background-color 0.3s ease-in;
 }
@@ -136,6 +127,16 @@ div.characters span:active {
 	color:				red;
 }
 
+.preview {
+	float:				right;	
+	border-left:		1px solid #ccc;
+	border-bottom:		1px solid #ccc;
+	font-size:			55px;
+	width:				60px;
+	min-height:			70px;
+	text-align: 		center;
+	margin:				0 0 5px 5px;
+}
 
 .tipAdd {
 	vertical-align: 	middle;

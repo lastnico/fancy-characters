@@ -379,6 +379,7 @@ function refreshFavoriteCharacters() {
 
 	$(".characters#favorite").empty();
 	
+	// TODO Limit to 60 characters
 	// TODO Sort by total usage
 	for (character in favorites) {
 		var spanCharacter = $("<span></span>").attr("rel", character).text(character)
