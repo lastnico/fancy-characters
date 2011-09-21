@@ -1,7 +1,7 @@
  README
 -----------------
 
-Welcome to Fancy Characters Chrome Extension source tree!
+Welcome to Fancy Characters (*the* Chrome Extension) Repository!
 
 Fancy Characters is a perfect extension for symbols and logos lovers, available on most computers and websites, 
 but never used due to the difficulty to reach them with a standard keyboard. 
@@ -19,12 +19,11 @@ favorite symbols.
 
 - And finally, for encryption lovers, a quick way to check MD5, SHA-1 and ROT-13 of text snippets.
 
-
  TODO 
 -----------------
- - Add http://utf8-characters.com/mathematical-alphanumeric-symbols/#dotless-symbols ?
- - Add a select all on Tools/Encryption section for results (and an Insert button)
- - Support TinyMCE, CKEditor?, Google+ div textarea,...
+
+See https://github.com/lastnico/fancy-characters/issues?sort=created&direction=desc&state=open&page=1 for having more 
+details about future releases and improvements.
 
  CREDITS
 -----------------
