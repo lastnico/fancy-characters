@@ -1,7 +1,7 @@
 
 (function( $ ){
 	$.fn.emptyResult = function() {
-		this.empty().html("<div class='void'>ø</div> Type something on the desired field below...</div>").addClass("empty");
+		this.empty().html("<div class='void'>ø</div>" + chrome.i18n.getMessage("empty_result") + "</div>").addClass("empty");
 		return this;
 	};
 	
@@ -20,7 +20,7 @@
 		this.qtip({
 			content: {
 				text: function(api) {
-					return "<span class='tipAdd'>Insert <span class='character'>" + $(this).text() + "</span>.</span>";
+					return "<span class='tipAdd'>" + chrome.i18n.getMessage("insert_character") + " <span class='character'>" + $(this).text() + "</span>.</span>";
 				}
 			},
 			show: {
@@ -108,6 +108,8 @@ $().ready(function() {
 		var fontSize = $(this).css("fontSize");
 		
 		$("div.characters span").css({ "fontFamily" : fontFamily, "fontSize" : fontSize });
+		$(".result.tools, .result.encryption").css({ "fontFamily" : fontFamily, "fontSize" : fontSize });
+
 	});
 
 	$(".characters span").live("mouseover mouseout", function() {
@@ -137,12 +139,12 @@ $().ready(function() {
 		return false;
 	});
 	
-	$("#removeCustoms").click(function() {
+	$("#removeCustom").click(function() {
 		localStorage['customCharacters'] = "";
 		refreshCustomCharacters();
 	});
 
-	$("#removeFavorites").click(function() {
+	$("#removeFavorite").click(function() {
 		var favorites = new Favorites();
 		favorites.empty();
 		favorites.store();
@@ -411,6 +413,56 @@ function l10n() {
 	$("ul.tabs li").text(function(index) {
 		return chrome.i18n.getMessage("tab_" + $(this).attr("rel"));
 	});
+	
+	$("section#symbols h1").text(chrome.i18n.getMessage("title_symbols"));
+	$("section#math h1").text(chrome.i18n.getMessage("title_math"));
+	$("section#shapes h1").text(chrome.i18n.getMessage("title_shapes"));
+
+	$("h1#customTitle").text(chrome.i18n.getMessage("title_custom"));
+	$("#removeCustom").text(chrome.i18n.getMessage("remove_custom"));
+	$("#newCharactersLabel").text(chrome.i18n.getMessage("new_characters"));
+	$("#suggestionSee").text(chrome.i18n.getMessage("suggestion_see"));
+	$("#suggestionLink").text(chrome.i18n.getMessage("suggestion_link"));
+	$("#suggestionLink").attr("title", chrome.i18n.getMessage("suggestion_link_title"));
+
+	$("h1#favoriteTitle").text(chrome.i18n.getMessage("title_favorite"));
+	$("#removeFavorite").text(chrome.i18n.getMessage("remove_favorite"));
+	
+	$("section#tools h1").text(chrome.i18n.getMessage("title_tools"));
+	$("section#tools label[for=rounded]").text(chrome.i18n.getMessage("tool_rounded"));
+	$("section#tools label[for=flip]").text(chrome.i18n.getMessage("tool_flip"));
+	$("section#tools label[for=braille]").text(chrome.i18n.getMessage("tool_braille"));
+	$("section#tools label[for=leetSpeak]").text(chrome.i18n.getMessage("tool_leet_speak"));
+	$("section#tools label[for=leetSpeakCoding]").text(chrome.i18n.getMessage("tool_leet_speak_coding"));
+	$("section#tools label[for=leetSpeakBasic]").text(chrome.i18n.getMessage("leet_speak_coding_basic"));
+	$("section#tools label[for=leetSpeakLight]").text(chrome.i18n.getMessage("leet_speak_coding_light"));
+	$("section#tools label[for=leetSpeakMedium]").text(chrome.i18n.getMessage("leet_speak_coding_medium"));
+	$("section#tools label[for=leetSpeakHigh]").text(chrome.i18n.getMessage("leet_speak_coding_high"));
+	$("section#tools label[for=morse]").text(chrome.i18n.getMessage("tool_morse"));
+
+	// Encryption
+	$("section#encryption h1").text(chrome.i18n.getMessage("title_encryption"));
+	
+	$("section#encryption label[for=md5]").text(chrome.i18n.getMessage("encryption_md5"));
+	$("section#encryption label[for=sha1]").text(chrome.i18n.getMessage("encryption_sha1"));
+	$("section#encryption label[for=rot13] a").text(chrome.i18n.getMessage("encryption_rot13"));
+
+	// Solution
+	$("#ugly").text(chrome.i18n.getMessage("troubleshooting_ugly"));
+	$("#solution").text(chrome.i18n.getMessage("troubleshooting_solution"));
+
+	$("#solution-tips .p1").text(chrome.i18n.getMessage("solution_tip_p1"));
+	$("#solution-tips .p2").text(chrome.i18n.getMessage("solution_tip_p2"));
+	$("#solution-tips .p3").text(chrome.i18n.getMessage("solution_tip_p3"));
+	$("#solution-tips .p4").text(chrome.i18n.getMessage("solution_tip_p4"));
+
+	// Footer
+	$("#twitter").attr("title", chrome.i18n.getMessage("twitter_title"));
+	$("#donate").attr("title", chrome.i18n.getMessage("donate_title"));
+	$("#email").attr("title", chrome.i18n.getMessage("email_title"));
+	$("#extensionLink").text(chrome.i18n.getMessage("extension_link"));
+	$("#unicodeLink").text(chrome.i18n.getMessage("unicode_link"));
+
 }
 
 function getCustoms() {
@@ -496,21 +548,21 @@ Favorites.prototype.refreshBlock = function() {
 
 		var usageString;
 		if (usage == 1) {
-			usageString = "once";
+			usageString = chrome.i18n.getMessage("used_once");
 		}
 		else if (usage == 2) {
-			usageString = "twice";
+			usageString = chrome.i18n.getMessage("used_twice");
 		}
 		else {
-			usageString = usage + " times";
+			usageString = chrome.i18n.getMessage("used_n_times", [ usage ]);
 		}
 
 		
 		var spanCharacter = $("<span></span>").text("" + character)
 			.qtip({
 				content: {
-					text: $("<div></div>").addClass("tipAdd").append("Insert <span class='character'>" + character + "</span>")
-							.append(" <strong>(used " + usageString + ")</strong>.")
+					text: $("<div></div>").addClass("tipAdd").append(chrome.i18n.getMessage("insert_character") + " <span class='character'>" + character + "</span>")
+							.append(" <strong>" + usageString + "</strong>.")
 				},
 				show: {
 					delay: 750

@@ -7,9 +7,13 @@
 		"message" : "Extend your keyboard with hundred of nice Unicode characters (☺ © ♨ ♡…) in forms of every website. Tools to convert words to Flipped ʇxǝʇ, Rounded ⓣⓔⓧⓣ, Leet 5P34K, Morse,...",
 		"description":	"Extension Description"
 	},
+	
+	/* Header */
 	"instructions" : {
 		"message" : "Click to insert a character at the current cursor position."
 	},
+	
+	/* Tabs */
 	"tab_symbols" : {
 		"message" : "Symbols"
 	},
@@ -27,6 +31,169 @@
 	},
 	"tab_tools" : {
 		"message" : "Tools"
+	},
+	
+	/* Section Symbols */
+	"title_symbols" : {
+		"message" : "Symbols & Misc"
+	},
+
+	/* Section Math */
+	"title_math" : {
+		"message" : "Mathematics"
+	},
+
+	/* Section Shapes */
+	"title_shapes" : {
+		"message" : "Shapes & Arrows"
+	},
+
+	/* Section Custom */
+	"title_custom" : {
+		"message" : "Custom Characters"
+	},
+	"remove_custom" : {
+		"message" : "Remove All"
+	},
+	"new_characters" : {
+		"message" : "Add:"
+	},
+	"suggestion_see" : {
+		"message" : "See"
+	},
+	"suggestion_link" : {
+		"message" : "Suggestions..."
+	},
+	"suggestion_link_title" : {
+		"message" : "See Suggestions at UTF8 Characters website..."
+	},
+	
+	/* Tooltip and Results content */
+	
+	"empty_result" : {
+		"message" : "Type your text on the desired field below..."
+	},
+	"insert_character" : {
+		"message" : "Insert"
+	},
+	
+	"used_once" : {
+		"message" : "(used once)"
+	},
+	"used_twice" : {
+		"message" : "(used twice)"
+	},
+	"used_n_times" : {
+		"message": "(used $n$ times)",
+		"description": "Number of times a favorite character was used",
+		"placeholders": {
+			"n": {
+				"content": "$1",
+				"example": "3, 4, 12, 42"
+			}
+		}	
+	},
+	
+	/* Section Favorites */
+
+	"title_favorite" : {
+		"message" : "Favorites"
+	},
+	"remove_favorite" : {
+		"message" : "Reset"
+	},
+	
+	/* Section Tools */
+	"title_tools" : {
+		"message" : "Additional Tools"
+	},
+	
+	"tool_rounded" : {
+		"message" : "Rounded:"
+	},
+	"tool_flip" : {
+		"message" : "Flip:"
+	},
+	"tool_braille" : {
+		"message" : "Braille:"
+	},
+	"tool_leet_speak" : {
+		"message" : "Leet Speak:"
+	},
+	"tool_leet_speak_coding" : {
+		"message" : "Coding:"
+	},
+	"leet_speak_coding_basic" : {
+		"message" : "Basic"
+	},
+	"leet_speak_coding_light" : {
+		"message" : "Light"
+	},
+	"leet_speak_coding_medium" : {
+		"message" : "Medium"
+	},
+	"leet_speak_coding_high" : {
+		"message" : "High"
+	},
+	"tool_morse" : {
+		"message" : "Morse Code:"
+	},
+
+	/* Section Encryption */
+	"title_encryption" : {
+		"message" : "Encryption"
+	},
+
+	"encryption_md5" : {
+		"message" : "MD5:"
+	},
+	"encryption_sha1" : {
+		"message" : "SHA-1:"
+	},
+	"encryption_rot13" : {
+		"message" : "ROT-13"
+	},
+	
+	/* Troubleshooting */
+
+	"troubleshooting_ugly" : {
+		"message" : "Some ugly symbols ▢ or � are in this list?"
+	},
+	"troubleshooting_solution" : {
+		"message" : "Solutions..."
+	},	
+	
+	"solution_tip_p1" : {
+		"message" : "This Chrome Extension relies on the default fonts installed on your computer and by those the actual site is using."
+	},	
+	"solution_tip_p2" : {
+		"message" : "This extension currently uses the following fonts:"
+	},	
+	"solution_tip_p3" : {
+		"message" : "... while this website uses:"
+	},	
+	"solution_tip_p4" : {
+		"message" : "Select one of these fonts to preview which symbols are supported."
+	},	
+	
+	/* Footer */
+
+	"twitter_title" : {
+		"message" : "Get Latest News About Fancy Characters."
+	},
+	"donate_title" : {
+		"message" : "You like Fancy Characters? Donations are always welcome ☺."
+	},
+	"email_title" : {
+		"message" : "Contact Author: Nicolas Ternisien <nicolas.ternisien@gmail.com>."
+	},
+	"extension_link" : {
+		"message" : "Fancy Characters"
+	},
+	"unicode_link" : {
+		"message" : "Unicode"
 	}
+	
+	
 	
 }

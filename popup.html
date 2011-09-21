@@ -749,23 +749,23 @@
 	<section id="various">
 		
 		<div class="preview">&nbsp;</div>
-		<span class="link removeAll" id="removeCustoms">Remove All</span>
+		<span class="link removeAll" id="removeCustom">Remove All</span>
 
-		<h1>Custom Characters</h1>
+		<h1 id="customTitle">Custom Characters</h1>
 
 		<div class="characters" id="custom">
 		</div>
 		
 		<div id="customCharactersFormBlock">
 			<form action="" id="customCharactersForm">
-				<label class="tool" for="newCharacters">Add: </label> <input type="text" id="newCharacters" value="" size="5" />
-				<span class="suggestions">See <a href="http://utf8-characters.com/" title="See Suggestions at UTF8 Characters">Suggestions...</a></span>
+				<label class="tool" for="newCharacters" id="newCharactersLabel">Add: </label> <input type="text" id="newCharacters" value="" size="5" />
+				<span class="suggestions"><span id="suggestionSee">See</span> <a href="http://utf8-characters.com/" title="See Suggestions at UTF8 Characters" id="suggestionLink">Suggestions...</a></span>
 				
 			</form>
 		</div>
 		
-		<span class="link removeAll" id="removeFavorites">Reset</span>
-		<h1>Favorites</h1>
+		<span class="link removeAll" id="removeFavorite">Reset</span>
+		<h1 id="favoriteTitle">Favorites</h1>
 		<div class="characters" id="favorite">
 		</div>
 			
@@ -835,29 +835,29 @@
 	
 
 	<footer>
-		<div id="troubleshootings">
-			<span id="ugly">Do you have ugly ▢ or � symbols in this list? </span> <span id="solution" class="link">Solutions</span>...
+		<div id="troubleshooting">
+			<span id="ugly">Do you have ugly ▢ or � symbols in this list? </span> <span id="solution" class="link">Solutions...</span>
 		</div>
 		
 		<div id="solution-tips" style="display: none">
-			<p>
+			<p class="p1">
 				This Chrome Extension relies on the default font installed on your computer and those the current site you are 
 				browsing is selecting.
 			</p>
 			
-			<p>
+			<p class="p2">
 			This extension currently uses the following fonts:
 			</p>
 			
 			<div class="link changeFont currentFont"></div>
 			
-			<p>
+			<p class="p3">
 			... while this website uses:
 			</p>
 
 			<div class="link changeFont websiteFont"></div>
 			
-			<p>
+			<p class="p4">
 			Select one of these fonts to preview which symbols are supported.
 			</p>
 		</div>
@@ -867,11 +867,11 @@
 			<g:plusone size="small" href="https://chrome.google.com/webstore/detail/jiodgoobpedodhgpdicmiefdcdjnddbf"></g:plusone>
 			
 			<a id="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7XB456TB4F24J" title="You like Fancy Characters? Donations are always welcome ☺."><img src="/img/donate.png"></a>
-			<a id="email" href="mailto:nicolas.ternisien@gmail.com?subject=Fancy%20Characters" title="Contact Author: Nicolas Ternisien."><img src="/img/email.png" alt="Email" /></a>
+			<a id="email" href="mailto:nicolas.ternisien@gmail.com?subject=Fancy%20Characters" title="Contact Author: Nicolas Ternisien <nicolas.ternisien@gmail.com>."><img src="/img/email.png" alt="Email" /></a>
 		</div>
 		
-		<a href="http://lastnico.github.com/fancy-characters/">Fancy Characters</a> &amp;
-		<a href="http://www.unicode.org/versions/Unicode6.0.0/">Unicode</a>.
+		<a href="https://chrome.google.com/webstore/detail/jiodgoobpedodhgpdicmiefdcdjnddbf" id="extensionLink">Fancy Characters</a> &amp;
+		<a href="http://www.unicode.org/versions/Unicode6.0.0/" id="unicodeLink">Unicode</a>.
 	</footer>
 
     <script src="js/jquery-1.6.4.min.js" ></script>
