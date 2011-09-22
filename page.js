@@ -1,4 +1,3 @@
-var fancyQuery = jQuery.noConflict();
 
 function findActiveElement(activeWindow, activeDocument) {
 	var activeElement = activeDocument.activeElement;
@@ -83,12 +82,12 @@ function insertCharacter(character) {
 			editable.selectionEnd = leftCursor + 1;
 		}
 		
-		fancyQuery(editable).stop(true, true).effect("highlight", {}, 500);
+		$(editable).stop(true, true).effect("highlight", {}, 500);
 	}
 	else {
 		insertTextAtCursor(character, activeWindow, activeDocument);
 		
-		fancyQuery(editable).stop(true, true).effect("highlight", {}, 500);
+		$(editable).stop(true, true).effect("highlight", {}, 500);
 	}
 
 }
