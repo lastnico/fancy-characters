@@ -1,4 +1,3 @@
-
 function findActiveElement(activeWindow, activeDocument) {
 	var activeElement = activeDocument.activeElement;
 	if (! activeElement) {
@@ -20,7 +19,7 @@ function findActiveElement(activeWindow, activeDocument) {
 		}
 		// Try with the id
 		else if (activeElement.id) {
-			var frame = document.getElementById(activeElement.id);
+			var frame = activeDocument.getElementById(activeElement.id);
 			if (frame) {
 				newWindow = frame.contentWindow;
 				newDocument = frame.contentDocument;
