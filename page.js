@@ -1,61 +1,95 @@
 var fancyQuery = jQuery.noConflict();
 
-function findActiveElement(activeElement) {
+function findActiveElement(activeWindow, activeDocument) {
+	var activeElement = activeDocument.activeElement;
 	if (! activeElement) {
 		return null;
 	}
 	
+	// If iframe, we have to go deeper in the DOM
 	if (activeElement.nodeName == "IFRAME") {
-		var editable = null;
+		var newWindow = null;
+		var newDocument = null;
+		
 		// Try with the name
 		if (activeElement.name) {
-			var frame = window.frames[activeElement.name];
+			var frame = activeWindow.frames[activeElement.name];
 			if (frame) {
-				editable = frame.document.activeElement;
+				newWindow = frame.window;
+				newDocument = frame.document;
 			}
 		}
 		// Try with the id
 		else if (activeElement.id) {
 			var frame = document.getElementById(activeElement.id);
 			if (frame) {
-				editable = frame.contentDocument.activeElement;
+				newWindow = frame.contentWindow;
+				newDocument = frame.contentDocument;
 			}
 		}
 		
-		return findActiveElement(editable);
+		return findActiveElement(newWindow, newDocument);
 	}
-	else if (activeElement.nodeName == "INPUT" || activeElement.nodeName == "TEXTAREA") {
-		return activeElement;
+	else if (activeElement.contentEditable ||
+			activeElement.nodeName == "INPUT" || 
+			activeElement.nodeName == "TEXTAREA") {
+		return { "activeElement": activeElement, "activeWindow": activeWindow, "activeDocument": activeDocument };
 	}
 
 	return null;
 
 };
 
+// TODO Insert / replace / reposition caret
+function insertTextAtCursor(text, cWindow, cDocument) {
+   var sel, range, html;
+   if (cWindow.getSelection) {
+       sel = cWindow.getSelection();
+       if (sel.getRangeAt && sel.rangeCount) {
+           range = sel.getRangeAt(0);
+           range.insertNode( cDocument.createTextNode(text) );
+       }
+   } else if (cDocument.selection && cDocument.selection.createRange) {
+       range = cDocument.selection.createRange();
+       range.pasteHTML(text);
+   }
+}
+
 function insertCharacter(character) {
-	var editable = this.findActiveElement(document.activeElement);
+	var result = this.findActiveElement(window, document);
 	
-	if (! editable) {
+	if (! result) {
 		return;
 	}
 	
-	if (! editable.value) {
-		editable.value = character;
+	var editable = result.activeElement;
+	var activeWindow = result.activeWindow;
+	var activeDocument = result.activeDocument;
+	
+	if (activeElement.nodeName == "INPUT" || activeElement.nodeName == "TEXTAREA") {
+		
+		if (! editable.value) {
+			editable.value = character;
+		}
+		else {
+			var oldtext = editable.value;
+			var leftCursor = editable.selectionStart;
+			
+			pretext = oldtext.substring(0, editable.selectionStart);
+			posttest = oldtext.substring(editable.selectionEnd, oldtext.length);
+			editable.value = pretext + character + posttest;
+			
+			editable.selectionStart = leftCursor + 1;
+			editable.selectionEnd = leftCursor + 1;
+		}
+		
+		fancyQuery(editable).stop(true, true).effect("highlight", {}, 500);
 	}
 	else {
-		var oldtext = editable.value;
-		var leftCursor = editable.selectionStart;
+		insertTextAtCursor(character, activeWindow, activeDocument);
 		
-		pretext = oldtext.substring(0, editable.selectionStart);
-		posttest = oldtext.substring(editable.selectionEnd, oldtext.length);
-		editable.value = pretext + character + posttest;
-		
-		editable.selectionStart = leftCursor + 1;
-		editable.selectionEnd = leftCursor + 1;
+		fancyQuery(editable).stop(true, true).effect("highlight", {}, 500);
 	}
-	
-	// TODO Maybe add a highlight effect?
-	fancyQuery(editable).stop(true, true).effect("highlight", {}, 500);
 
 }
 
