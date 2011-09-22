@@ -8,12 +8,12 @@
 		"description":	"Extension Description"
 	},
 	
-	/* Header */
+	
 	"instructions" : {
 		"message" : "Click to insert a character at the current cursor position."
 	},
 	
-	/* Tabs */
+	
 	"tab_symbols" : {
 		"message" : "Symbols"
 	},
@@ -33,22 +33,22 @@
 		"message" : "Tools"
 	},
 	
-	/* Section Symbols */
+	
 	"title_symbols" : {
 		"message" : "Symbols & Misc"
 	},
 
-	/* Section Math */
+	
 	"title_math" : {
 		"message" : "Mathematics"
 	},
 
-	/* Section Shapes */
+	
 	"title_shapes" : {
 		"message" : "Shapes & Arrows"
 	},
 
-	/* Section Custom */
+	
 	"title_custom" : {
 		"message" : "Custom Characters"
 	},
@@ -68,7 +68,7 @@
 		"message" : "See Suggestions at UTF8 Characters website..."
 	},
 	
-	/* Tooltip and Results content */
+	
 	
 	"empty_result" : {
 		"message" : "Type your text on the desired field below..."
@@ -94,7 +94,7 @@
 		}	
 	},
 	
-	/* Section Favorites */
+	
 
 	"title_favorite" : {
 		"message" : "Favorites"
@@ -103,7 +103,7 @@
 		"message" : "Reset"
 	},
 	
-	/* Section Tools */
+	
 	"title_tools" : {
 		"message" : "Additional Tools"
 	},
@@ -139,7 +139,7 @@
 		"message" : "Morse Code:"
 	},
 
-	/* Section Encryption */
+	
 	"title_encryption" : {
 		"message" : "Encryption"
 	},
@@ -154,7 +154,7 @@
 		"message" : "ROT-13"
 	},
 	
-	/* Troubleshooting */
+	
 
 	"troubleshooting_ugly" : {
 		"message" : "Some ugly symbols ▢ or � are in this list?"
@@ -176,7 +176,7 @@
 		"message" : "Select one of these fonts to preview which symbols are supported."
 	},	
 	
-	/* Footer */
+	
 
 	"twitter_title" : {
 		"message" : "Get Latest News About Fancy Characters."

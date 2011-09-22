@@ -8,12 +8,12 @@
 		"description":	"Extension Description"
 	},
 
-	/* Header */
+	
 	"instructions" : {
 		"message" : "Cliquez pour insérer un caractère à la position courante du curseur."
 	},
 	
-	/* Tabs */
+	
 	"tab_symbols" : {
 		"message" : "Symboles"
 	},
@@ -34,22 +34,22 @@
 	},
 	
 	
-	/* Section Symbols */
+	
 	"title_symbols" : {
 		"message" : "Symboles & Divers"
 	},
 
-	/* Section Math */
+	
 	"title_math" : {
 		"message" : "Mathématiques"
 	},
 
-	/* Section Shapes */
+	
 	"title_shapes" : {
 		"message" : "Formes & Flèches"
 	},
 
-	/* Section Custom */
+	
 	"title_custom" : {
 		"message" : "Caractères personnalisés"
 	},
@@ -69,7 +69,7 @@
 		"message" : "Consultez les suggestions sur le site UTF8 Characters..."
 	},
 	
-	/* Tooltip and Results content */
+	
 	
 	"empty_result" : {
 		"message" : "Saisissez votre texte dans l'un des champs ci-dessous..."
@@ -95,7 +95,7 @@
 		}	
 	},
 	
-	/* Section Favorites */
+	
 
 	"title_favorite" : {
 		"message" : "Favoris"
@@ -104,7 +104,7 @@
 		"message" : "Réinitialiser"
 	},
 	
-	/* Section Tools */
+	
 	"title_tools" : {
 		"message" : "Outils supplémentaires"
 	},
@@ -140,7 +140,7 @@
 		"message" : "Code Morse :"
 	},
 
-	/* Section Encryption */
+	
 	"title_encryption" : {
 		"message" : "Cryptage"
 	},
@@ -155,7 +155,7 @@
 		"message" : "ROT-13"
 	},
 	
-	/* Troubleshooting */
+	
 
 	"troubleshooting_ugly" : {
 		"message" : "Des caractères ▢ ou � s'affichent dans cette liste ?"
@@ -177,7 +177,7 @@
 		"message" : "Sélectionnez l'une de ces polices pour prévisualisez la liste des symboles gérés."
 	},	
 	
-	/* Footer */
+	
 
 	"twitter_title" : {
 		"message" : "Les dernières nouvelles à propos de l'extension Caractères Fantaisistes."
