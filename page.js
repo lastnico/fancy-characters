@@ -25,6 +25,12 @@ function findActiveElement(activeWindow, activeDocument) {
 				newDocument = frame.contentDocument;
 			}
 		}
+		// Try directly (maybe this always works???)
+		else {
+			var frame = activeElement;
+			newWindow = frame.contentWindow;
+			newDocument = frame.contentDocument;
+		}
 		
 		return findActiveElement(newWindow, newDocument);
 	}
