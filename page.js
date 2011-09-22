@@ -64,7 +64,7 @@ function insertCharacter(character) {
 	var activeWindow = result.activeWindow;
 	var activeDocument = result.activeDocument;
 	
-	if (activeElement.nodeName == "INPUT" || activeElement.nodeName == "TEXTAREA") {
+	if (editable.nodeName == "INPUT" || editable.nodeName == "TEXTAREA") {
 		
 		if (! editable.value) {
 			editable.value = character;
@@ -83,6 +83,7 @@ function insertCharacter(character) {
 		
 		$(editable).stop(true, true).effect("highlight", {}, 500);
 	}
+	// contentEditable
 	else {
 		insertTextAtCursor(character, activeWindow, activeDocument);
 		
