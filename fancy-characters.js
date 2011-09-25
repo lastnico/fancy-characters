@@ -34,9 +34,11 @@ function findActiveElement(activeWindow, activeDocument) {
 		
 		return findActiveElement(newWindow, newDocument);
 	}
-	else if (activeElement.contentEditable ||
+	else if ( (activeElement.contentEditable && activeElement.contentEditable != "inherit") ||
 			activeElement.nodeName == "INPUT" || 
 			activeElement.nodeName == "TEXTAREA") {
+		// TODO Remove debug
+		//console.log(activeElement);
 		return { "activeElement": activeElement, "activeWindow": activeWindow, "activeDocument": activeDocument };
 	}
 
@@ -63,7 +65,7 @@ function insertCharacter(character) {
 	var result = this.findActiveElement(window, document);
 	
 	if (! result) {
-		return;
+		return false;
 	}
 	
 	var editable = result.activeElement;
@@ -88,25 +90,29 @@ function insertCharacter(character) {
 		}
 		
 		$(editable).stop(true, true).effect("highlight", {}, 500);
+		
+		return true;
 	}
-	// contentEditable
-	else {
+	else if (activeElement.contentEditable && activeElement.contentEditable != "inherit") {
 		insertTextAtCursor(character, activeWindow, activeDocument);
 		
 		$(editable).stop(true, true).effect("highlight", {}, 500);
+
+		return true;
 	}
 
+	return false;	
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	if (request.action == "insert-character") {
-		insertCharacter(request.content);
+		var result = insertCharacter(request.content);
+		sendResponse(result);
 	}
 	else if (request.action == "get-font") {
-		sendResponse( { 
-			action : "get-font", 
-			fontFamily: fancyQuery("body").css("fontFamily"),
-			fontSize: fancyQuery("body").css("fontSize")
+		sendResponse( {
+			fontFamily: $("body").css("fontFamily"),
+			fontSize: $("body").css("fontSize")
 		} );
 	}
 	

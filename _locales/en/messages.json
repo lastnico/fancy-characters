@@ -192,7 +192,13 @@
 	},
 	"unicode_link" : {
 		"message" : "Unicode"
+	},
+
+	"insertion_failed" : {
+		"message" : "First select field to insert this character on."
 	}
+
+	
 	
 	
 	

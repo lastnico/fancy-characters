@@ -11,7 +11,7 @@
 			this.html(content);
 		}
 		
-		resizeSections();
+		resizeSections(false);
 
 		return this;
 	};
@@ -45,19 +45,44 @@
 var SYMBOL_FONT_FAMILY;
 var SYMBOL_FONT_SIZE;
 
+var INITIALIZED = false;
+
+var sections = {};
+
+function showSection(sectionId) {
+	// Do not refresh current section
+	if ($("section#" + sectionId).is(".current")) {
+		return;
+	}
+	
+	$("ul.tabs li").not("[rel=" + sectionId + "]").removeClass('current');
+	$("section.current").removeClass('current').fadeOut();
+	
+	$("ul.tabs li[rel=" + sectionId + "]").addClass("current");
+    $("section#" + sectionId).addClass('current').fadeIn();
+    
+    if (INITIALIZED)
+    	resizeSections(false);
+    else
+    	resizeSections(true);
+    
+    localStorage["currentTab"] = sectionId;
+
+}
+
 $().ready(function() {
 	
 	l10n();
 	
 	var currentTab = localStorage["currentTab"] || "symbols";
-	$("ul.tabs li[rel=" + currentTab + "]").addClass("current");
-	$("section#" + currentTab).addClass('current').show();
-	resizeSections();
-	
+	showSection(currentTab);
+
 	$(".result.tools, .result.encryption").emptyResult();
 	
 	new Favorites().refreshBlock();
 	refreshCustomCharacters();
+	
+	$(".characters:not(#custom, #favorite) span").characterTip();
 	
 	SYMBOL_FONT_FAMILY = $("div.characters span").css("font-family");
 	SYMBOL_FONT_SIZE = $("div.characters span").css("font-size");
@@ -66,15 +91,7 @@ $().ready(function() {
 		hideTips();
 		
 		var sectionId = $(this).attr("rel");
-		
-		$("ul.tabs li").not("[rel=" + sectionId + "]").removeClass('current');
-		$("section").not("#" + sectionId).removeClass('current').fadeOut();
-		
-		$(this).addClass('current');
-        $("section#" + sectionId).addClass('current').fadeIn();
-        resizeSections();
-        
-        localStorage["currentTab"] = sectionId;
+		showSection(sectionId);
 	});
 	
 	$("#solution").qtip({
@@ -115,8 +132,6 @@ $().ready(function() {
 	$(".characters span").live("mouseover mouseout", function() {
 		$(this).parents("section").filter(":first").find(".preview").text($(this).text());
 	});
-	
-	$(".characters:not(#custom, #favorite) span").characterTip();
 	
 	$("#customCharactersForm, #newCharacters").bind("submit keyup", function() {
 		var newCharacters = $("#newCharacters").val();
@@ -284,6 +299,7 @@ $().ready(function() {
 	});
 	
 	
+	INITIALIZED = true;
 	
 });
 
@@ -309,11 +325,14 @@ function prepareSolutionTips(tips) {
 	
 }
 
-function resizeSections() {
+function resizeSections(immediate) {
     var height = $("section.current").outerHeight();
     
     if (height != $("#sections").height()) {
-    	$("#sections").stop(true).animate({ "height" : height + "px"  }, 'slow');
+    	if (immediate)
+    		$("#sections").css({ "height" : height + "px"  });
+    	else
+        	$("#sections").stop(true).animate({ "height" : height + "px"  }, 'slow');
     }
 } 
 
@@ -392,9 +411,31 @@ function refreshLeetSpeakResult() {
 	$(".result.tools").withResult(result);
 }
 
+var insertionFailedTimeout = null;
 function appendCharacter(character) {
 	chrome.tabs.getSelected(null, function(tab) {
-	    chrome.tabs.sendRequest(tab.id, { action: "insert-character", content : character});
+	    chrome.tabs.sendRequest(tab.id, { action: "insert-character", content : character}, function(response) {
+	    	if (! response) {
+	    		if ($("#insertion-failed").length != 0) {
+	    			$("#insertion-failed").stop(true).fadeIn("fast");
+	    		}
+	    		else {
+		    		$("footer").append($("<div></div>")
+		    				.css("display", "none")
+		    				.attr("id", "insertion-failed")
+		    				.text(chrome.i18n.getMessage("insertion_failed"))
+		    				.fadeIn("fast"));
+	    		}
+	    		
+
+	    		if (insertionFailedTimeout) {
+	    			window.clearTimeout(insertionFailedTimeout);
+	    		}
+	    		insertionFailedTimeout = window.setTimeout(function() {
+	    			$("#insertion-failed").fadeOut();
+	    		}, 4000);
+	    	}
+		});
 	});
 	
 	var favorites = new Favorites();

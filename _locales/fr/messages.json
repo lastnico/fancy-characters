@@ -193,8 +193,11 @@
 	},
 	"unicode_link" : {
 		"message" : "Unicode"
+	},
+	
+	"insertion_failed" : {
+		"message" : "Sélectionnez tout d'abord le champ auquel insérer ce caractère."
 	}
-	
-	
+
 	
 }
