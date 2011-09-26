@@ -102,8 +102,14 @@
 	"remove_favorite" : {
 		"message" : "Reset"
 	},
-	
-	
+
+	"insert_result" : {
+		"message" : "Insert"
+	},
+	"select_result" : {
+		"message" : "Select"
+	},
+		
 	"title_tools" : {
 		"message" : "Additional Tools"
 	},
@@ -152,6 +158,15 @@
 	},
 	"encryption_rot13" : {
 		"message" : "ROT-13"
+	},
+	"encryption_base64" : {
+		"message" : "Base64"
+	},
+	"encryption_encrypt" : {
+		"message" : "Encrypt"
+	},
+	"encryption_decrypt" : {
+		"message" : "Decrypt"
 	},
 	
 	

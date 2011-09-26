@@ -103,7 +103,15 @@
 	"remove_favorite" : {
 		"message" : "Réinitialiser"
 	},
+
+	"insert_result" : {
+		"message" : "Insérer"
+	},
+	"select_result" : {
+		"message" : "Sélectionner"
+	},
 	
+
 	
 	"title_tools" : {
 		"message" : "Outils supplémentaires"
@@ -153,6 +161,15 @@
 	},
 	"encryption_rot13" : {
 		"message" : "ROT-13"
+	},
+	"encryption_base64" : {
+		"message" : "Base64"
+	},
+	"encryption_encrypt" : {
+		"message" : "Chiffrer"
+	},
+	"encryption_decrypt" : {
+		"message" : "Déchiffrer"
 	},
 	
 	

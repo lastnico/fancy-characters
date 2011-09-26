@@ -411,8 +411,6 @@
 <span data-entity="&ge" data-name="GREATER-THAN OR EQUAL TO">≥</span>
 <span data-name="LESS-THAN OVER EQUAL TO">≦</span>
 <span data-name="GREATER-THAN OVER EQUAL TO">≧</span>
-<span data-name="LESS-THAN BUT NOT EQUAL TO">≨</span>
-<span data-name="GREATER-THAN BUT NOT EQUAL TO">≩</span>
 <span data-name="MUCH LESS-THAN">≪</span>
 <span data-name="MUCH GREATER-THAN">≫</span>
 <span data-name="BETWEEN">≬</span>
@@ -447,9 +445,6 @@
 <span data-name="NEITHER A SUPERSET OF NOR EQUAL TO">⊉</span>
 <span data-name="SUBSET OF WITH NOT EQUAL TO">⊊</span>
 <span data-name="SUPERSET OF WITH NOT EQUAL TO">⊋</span>
-<span data-name="MULTISET">⊌</span>
-<span data-name="MULTISET MULTIPLICATION">⊍</span>
-<span data-name="MULTISET UNION">⊎</span>
 <span data-name="SQUARE IMAGE OF">⊏</span>
 <span data-name="SQUARE ORIGINAL OF">⊐</span>
 <span data-name="SQUARE IMAGE OF OR EQUAL TO">⊑</span>
@@ -474,15 +469,6 @@
 <span data-name="DOWN TACK">⊤</span>
 <span data-entity="&perp" data-name="UP TACK">⊥</span>
 <span data-name="ASSERTION">⊦</span>
-<span data-name="MODELS">⊧</span>
-<span data-name="TRUE">⊨</span>
-<span data-name="FORCES">⊩</span>
-<span data-name="TRIPLE VERTICAL BAR RIGHT TURNSTILE">⊪</span>
-<span data-name="DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE">⊫</span>
-<span data-name="DOES NOT PROVE">⊬</span>
-<span data-name="NOT TRUE">⊭</span>
-<span data-name="DOES NOT FORCE">⊮</span>
-<span data-name="NEGATED DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE">⊯</span>
 <span data-name="PRECEDES UNDER RELATION">⊰</span>
 <span data-name="SUCCEEDS UNDER RELATION">⊱</span>
 <span data-name="NORMAL SUBGROUP OF">⊲</span>
@@ -773,9 +759,12 @@
 	</section>
 
 	<section id="tools">
+		<span class="link select-result">Select</span>
+		<span class="link insert-result">Insert</span>
+		
 		<h1>Additional Tools</h1>
 
-           <div class="result tools"></div>
+		<div class="result tools"></div>
 		
 		<div>
 			<label class="tool" for="rounded">Rounded:</label> <input type="text" id="rounded" value="" size="16" />
@@ -807,9 +796,12 @@
 	</section>
 	
 	<section id="encryption">
+		<span class="link select-result">Select</span>
+		<span class="link insert-result">Insert</span>
+		
 		<h1>Encryption</h1>
-
-           <div class="result encryption"></div>
+		
+		<div class="result encryption"></div>
 		
 		<div>
 			<label class="tool" for="md5">MD5:</label> <input type="text" id="md5" value="" size="16" />
@@ -817,6 +809,14 @@
 
 		<div>
 			<label class="tool" for="sha1">SHA-1:</label> <input type="text" id="sha1" value="" size="16" />
+		</div>
+
+		<div>
+			<label class="tool" for="base64">Base64:</label> <input type="text" id="base64" value="" size="16" />
+			<span class="cryptings">
+				<label class="crypting encrypt enabled">Encrypt</label>
+				<label class="crypting decrypt" style="display:none">Decrypt</label>
+			</span>
 		</div>
            
 		<div>

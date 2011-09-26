@@ -1,7 +1,7 @@
 
 (function( $ ){
 	$.fn.emptyResult = function() {
-		this.empty().html("<div class='void'>ø</div>" + chrome.i18n.getMessage("empty_result") + "</div>").addClass("empty");
+		this.empty().html("<div class='void'>√∏</div>" + chrome.i18n.getMessage("empty_result") + "</div>").addClass("empty");
 		return this;
 	};
 	
@@ -20,7 +20,7 @@
 		this.qtip({
 			content: {
 				text: function(api) {
-					return "<span class='tipAdd'>" + chrome.i18n.getMessage("insert_character") + " <span class='character'>" + $(this).text() + "</span>.</span>";
+					return "<div class='tipAdd'>" + chrome.i18n.getMessage("insert_character") + " <span class='character'>" + $(this).text() + "</span>" + ( ($(this).attr("data-name")) ? "<div class='character-description'>" + $(this).attr("data-name") + ".</div>" : ".") + "</div>";
 				}
 			},
 			show: {
@@ -164,6 +164,32 @@ $().ready(function() {
 		favorites.empty();
 		favorites.store();
 	});
+
+	$(".insert-result").click(function() {
+		var result = $(this).parent().find(".result");
+		if (result.hasClass("empty")) {
+			return;
+		}
+		
+		appendCharacter(result.text());
+	});
+
+	$(".select-result").click(function() {
+		var result = $(this).parent().find(".result");
+		if (result.hasClass("empty")) {
+			return;
+		}
+
+		result = result.get(0);
+		
+	    var range = document.createRange();
+	    range.selectNodeContents(result);
+	    selection = window.getSelection();
+	    selection.removeAllRanges();
+	    selection.addRange(range);
+
+	});
+
 	
 	$("section#tools label.tool").qtip({
 		content: {
@@ -248,6 +274,14 @@ $().ready(function() {
 		$(".result.tools").withResult(result);
 			
 	});
+	
+	$("#leetSpeak").bind("click keyup", refreshLeetSpeakResult);
+	$("#leetSpeakCoding :radio").click(refreshLeetSpeakResult);
+	
+	$("a").click(function() {
+		chrome.tabs.create({ url: $(this).attr("href")});
+	});
+	
 
 	$("#md5").bind("click keyup", function() {
 		var value = $(this).val();
@@ -276,6 +310,24 @@ $().ready(function() {
 		$(".result.encryption").withResult(result);
 			
 	});
+	
+	$("section#encryption .crypting").click(function() {
+		var isDecrypt = $(this).hasClass("decrypt");
+		if (isDecrypt) {
+			$(this).removeClass("enabled").fadeOut();
+			$(this).parent().find(".encrypt").addClass("enabled").fadeIn();
+		}
+		else {
+			$(this).removeClass("enabled").fadeOut();
+			$(this).parent().find(".decrypt").addClass("enabled").fadeIn();
+			
+		}
+		
+		refreshBase64Result();
+	});
+	
+	$("#base64").bind("click keyup", refreshBase64Result);
+
 
 	$("#rot13").bind("click keyup", function() {
 		var value = $(this).val();
@@ -290,14 +342,6 @@ $().ready(function() {
 		$(".result.encryption").withResult(result);
 			
 	});
-	
-	$("#leetSpeak").keyup(refreshLeetSpeakResult);
-	$("#leetSpeakCoding :radio").click(refreshLeetSpeakResult);
-	
-	$("a").click(function() {
-		chrome.tabs.create({ url: $(this).attr("href")});
-	});
-	
 	
 	INITIALIZED = true;
 	
@@ -411,8 +455,27 @@ function refreshLeetSpeakResult() {
 	$(".result.tools").withResult(result);
 }
 
-var insertionFailedTimeout = null;
-function appendCharacter(character) {
+function refreshBase64Result() {
+	var value = $("#base64").val();
+	
+	if (! value) {
+		$(".result.encryption").emptyResult();
+		return;
+	}
+
+	var isDecrypt = $("#base64").parent().find(".crypting.enabled").hasClass("decrypt");
+	
+	var result;
+	if (isDecrypt)
+		result = fromBase64(value);
+	else
+		result = toBase64(value);
+		
+
+	$(".result.encryption").withResult(result);
+}
+
+function appendContent(character) {
 	chrome.tabs.getSelected(null, function(tab) {
 	    chrome.tabs.sendRequest(tab.id, { action: "insert-character", content : character}, function(response) {
 	    	if (! response) {
@@ -437,6 +500,12 @@ function appendCharacter(character) {
 	    	}
 		});
 	});
+
+}
+
+var insertionFailedTimeout = null;
+function appendCharacter(character) {
+	appendContent(character);
 	
 	var favorites = new Favorites();
 	favorites.useCharacter(character);
@@ -469,6 +538,9 @@ function l10n() {
 	$("h1#favoriteTitle").text(chrome.i18n.getMessage("title_favorite"));
 	$("#removeFavorite").text(chrome.i18n.getMessage("remove_favorite"));
 	
+	$(".insert-result").text(chrome.i18n.getMessage("insert_result"));
+	$(".select-result").text(chrome.i18n.getMessage("select_result"));
+	
 	$("section#tools h1").text(chrome.i18n.getMessage("title_tools"));
 	$("section#tools label[for=rounded]").text(chrome.i18n.getMessage("tool_rounded"));
 	$("section#tools label[for=flip]").text(chrome.i18n.getMessage("tool_flip"));
@@ -487,6 +559,9 @@ function l10n() {
 	$("section#encryption label[for=md5]").text(chrome.i18n.getMessage("encryption_md5"));
 	$("section#encryption label[for=sha1]").text(chrome.i18n.getMessage("encryption_sha1"));
 	$("section#encryption label[for=rot13] a").text(chrome.i18n.getMessage("encryption_rot13"));
+	$("section#encryption label[for=base64] a").text(chrome.i18n.getMessage("encryption_base64"));
+	$("section#encryption .crypting.encrypt").text(chrome.i18n.getMessage("encryption_encrypt"));
+	$("section#encryption .crypting.decrypt").text(chrome.i18n.getMessage("encryption_decrypt"));
 
 	// Solution
 	$("#ugly").text(chrome.i18n.getMessage("troubleshooting_ugly"));

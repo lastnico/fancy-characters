@@ -27,7 +27,7 @@ a, a:link, .link {
 }
 
 a:hover, .link:hover {
-	color:				blue;
+	font-weight:		bold;
 }
 
 a:active, .link:active {
@@ -108,9 +108,9 @@ div.characters {
 
 /* TODO Ensure all OSes have the right font selected here */
 div.characters span {
-	font-family: 		'Century Gothic', arial, serif;
+	font-family: 		serif;
 	font-weight:		bold;
-	font-size: 			20px;
+	font-size: 			21px;
 	padding:			2px 3px;
 	cursor:				pointer;
 	color:				#333;
@@ -128,6 +128,7 @@ div.characters span:active {
 }
 
 .preview {
+	font-family: 		serif;
 	float:				right;	
 	border-left:		1px solid #ccc;
 	border-bottom:		1px solid #ccc;
@@ -141,10 +142,16 @@ div.characters span:active {
 .tipAdd {
 	vertical-align: 	middle;
 	font-size:			11px;
+	max-width: 			150px;
 }
 
 .tipAdd .character {
-	font-size:			14px;
+	font-size:			16px;
+}
+
+.tipAdd .character-description {
+	font-size:			serif;
+	white-space: 		normal;
 }
 
 /**
@@ -207,6 +214,21 @@ section .result {
 	min-height: 		22px;
 	max-height: 		160px;
 	overflow: 			auto;
+	clear:				both;
+}
+
+section .select-result {
+	float:				right;
+	font-size:			12px;
+	padding:			6px 5px 0;
+	cursor:				pointer;
+}
+
+section .insert-result {
+	float:				right;	
+	font-size:			12px;
+	padding:			6px 5px 0;
+	cursor:				pointer;
 }
 
 section .result.empty {
@@ -270,7 +292,7 @@ section#encryption {
 	margin:				0 0 20px;
 }
 
-section#encryption label {
+section#encryption label:not(.crypting) {
 	display:			inline-block;
 	width:				25%;
 	font-size:			14px;
@@ -278,10 +300,37 @@ section#encryption label {
 }
 
 section#encryption input[type=text] {
+	width:				45%;
+}
+
+section#encryption input[type=text]#md5, section#encryption input[type=text]#sha1, section#encryption input[type=text]#rot13 {
 	width:				65%;
 }
 
 
+section#encryption .cryptings {
+	position:			relative;
+	width:				25%;
+}
+
+section#encryption label.crypting {
+	font-size:			12px;
+	font-weight: 		bold;
+	padding:			1px 0 1px 35px;
+	cursor: 			pointer;
+	position:			absolute;
+	top:				0;
+}
+
+section#encryption label.encrypt {
+	color:				#d51e3c;
+	background: 		transparent url(../img/encrypt.png) no-repeat 15px 50%;
+}
+
+section#encryption label.decrypt {
+	color:				#095b13;
+	background: 		transparent url(../img/decrypt.png) no-repeat 15px 50%;
+}
 
 footer {
 	margin-top:			5px;

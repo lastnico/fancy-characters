@@ -1,4 +1,8 @@
-function findActiveElement(activeWindow, activeDocument) {
+function findActiveElement(activeDocument) {
+	if (! activeDocument) {
+		return null;
+	}
+	
 	var activeElement = activeDocument.activeElement;
 	if (! activeElement) {
 		return null;
@@ -6,95 +10,107 @@ function findActiveElement(activeWindow, activeDocument) {
 	
 	// If iframe, we have to go deeper in the DOM
 	if (activeElement.nodeName == "IFRAME") {
-		var newWindow = null;
-		var newDocument = null;
-		
-		// Try with the name
-		if (activeElement.name) {
-			var frame = activeWindow.frames[activeElement.name];
-			if (frame) {
-				newWindow = frame.window;
-				newDocument = frame.document;
-			}
-		}
-		// Try with the id
-		else if (activeElement.id) {
-			var frame = activeDocument.getElementById(activeElement.id);
-			if (frame) {
-				newWindow = frame.contentWindow;
-				newDocument = frame.contentDocument;
-			}
-		}
-		// Try directly (maybe this always works???)
-		else {
-			var frame = activeElement;
-			newWindow = frame.contentWindow;
-			newDocument = frame.contentDocument;
-		}
-		
-		return findActiveElement(newWindow, newDocument);
+		var frame = activeElement;
+		var newDocument = frame.contentDocument;
+			
+		return findActiveElement(newDocument);
 	}
-	else if ( (activeElement.contentEditable && activeElement.contentEditable != "inherit") ||
-			activeElement.nodeName == "INPUT" || 
-			activeElement.nodeName == "TEXTAREA") {
-		// TODO Remove debug
-		//console.log(activeElement);
-		return { "activeElement": activeElement, "activeWindow": activeWindow, "activeDocument": activeDocument };
+	else if (activeElement.nodeName == "INPUT" || activeElement.nodeName == "TEXTAREA") {
+		return { "activeElement": activeElement, "activeDocument": activeDocument };
+	}
+	else if (activeElement.contentEditable && activeElement.contentEditable != "inherit") {
+		return { "activeElement": activeElement, "activeDocument": activeDocument };
+	}
+	// http://www.w3.org/TR/2008/WD-html5-20080610/editing.html#contenteditable0
+	else if (activeElement.contentEditable && activeElement.contentEditable == "inherit") {
+		if ($(activeElement).parents().is("[contentEditable=true]")) {
+			return { "activeElement": activeElement, "activeDocument": activeDocument };
+		}
 	}
 
 	return null;
 
 };
 
-// TODO Insert / replace / reposition caret
-function insertTextAtCursor(text, cWindow, cDocument) {
-   var sel, range, html;
-   if (cWindow.getSelection) {
-       sel = cWindow.getSelection();
-       if (sel.getRangeAt && sel.rangeCount) {
-           range = sel.getRangeAt(0);
-           range.insertNode( cDocument.createTextNode(text) );
-       }
-   } else if (cDocument.selection && cDocument.selection.createRange) {
-       range = cDocument.selection.createRange();
-       range.pasteHTML(text);
-   }
+function insertInContentEditable(text, activeDocument) {
+	var selection = activeDocument.getSelection();
+	var range;
+	try {
+		range = selection.getRangeAt(0);
+	} catch(e) {
+		return false;
+	}
+
+	var node = activeDocument.createTextNode(text);
+
+	if (selection.type == "Range") {
+		range.deleteContents();
+	}
+
+	range.insertNode(node);
+	
+	// see http://stackoverflow.com/questions/1125292/how-to-move-cursor-to-end-of-contenteditable-entity
+	// Create a range (a range is a like the selection but invisible)
+    range = activeDocument.createRange();
+    // Select the entire contents of the element with the range
+    range.selectNodeContents(node);
+    // collapse the range to the end point. false means collapse to end rather than the start
+    range.collapse(false);
+    // get the selection object (allows you to change selection)
+    selection = activeDocument.getSelection();
+    // remove any selections already made
+    selection.removeAllRanges();
+    // make the range you have just created the visible selection
+    selection.addRange(range);
+    
+    return true;
+}
+
+function insertInInput(editable, character) {
+	
+	if (! editable.value) {
+		editable.value = character;
+	}
+	else {
+		var oldtext = editable.value;
+		var leftCursor = editable.selectionStart;
+		
+		pretext = oldtext.substring(0, editable.selectionStart);
+		posttest = oldtext.substring(editable.selectionEnd, oldtext.length);
+		editable.value = pretext + character + posttest;
+		
+		editable.selectionStart = leftCursor + character.length;
+		editable.selectionEnd = leftCursor + character.length;
+	}
+
+	return true;
 }
 
 function insertCharacter(character) {
-	var result = this.findActiveElement(window, document);
+	var result = this.findActiveElement(document);
 	
 	if (! result) {
 		return false;
 	}
 	
 	var editable = result.activeElement;
-	var activeWindow = result.activeWindow;
 	var activeDocument = result.activeDocument;
 	
 	if (editable.nodeName == "INPUT" || editable.nodeName == "TEXTAREA") {
-		
-		if (! editable.value) {
-			editable.value = character;
-		}
-		else {
-			var oldtext = editable.value;
-			var leftCursor = editable.selectionStart;
-			
-			pretext = oldtext.substring(0, editable.selectionStart);
-			posttest = oldtext.substring(editable.selectionEnd, oldtext.length);
-			editable.value = pretext + character + posttest;
-			
-			editable.selectionStart = leftCursor + 1;
-			editable.selectionEnd = leftCursor + 1;
+		var success = insertInInput(editable, character);
+		if (! success) {
+			return false;
 		}
 		
 		$(editable).stop(true, true).effect("highlight", {}, 500);
 		
 		return true;
 	}
-	else if (activeElement.contentEditable && activeElement.contentEditable != "inherit") {
-		insertTextAtCursor(character, activeWindow, activeDocument);
+	else if (editable.contentEditable) {
+		var success = insertInContentEditable(character, activeDocument);
+		if (! success) {
+			return false;
+		}
 		
 		$(editable).stop(true, true).effect("highlight", {}, 500);
 
