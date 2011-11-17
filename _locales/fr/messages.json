@@ -15,13 +15,16 @@
 	
 	
 	"tab_symbols" : {
-		"message" : "Symboles"
+		"message" : "☼"
 	},
 	"tab_math" : {
-		"message" : "Maths"
+		"message" : "∑"
 	},
 	"tab_shapes" : {
-		"message" : "Formes"
+		"message" : "⬠"
+	},
+	"tab_smileys" : {
+		"message" : ";-)"
 	},
 	"tab_various" : {
 		"message" : "Perso."
@@ -49,6 +52,10 @@
 		"message" : "Formes & Flèches"
 	},
 
+	"title_smileys" : {
+		"message" : "Émoticônes :-)"
+	},
+
 	
 	"title_custom" : {
 		"message" : "Caractères personnalisés"
@@ -74,10 +81,6 @@
 	"empty_result" : {
 		"message" : "Saisissez votre texte dans l'un des champs ci-dessous..."
 	},
-	"insert_character" : {
-		"message" : "Insérer"
-	},
-	
 	"used_once" : {
 		"message" : "(utilisé une fois)"
 	},
@@ -92,9 +95,24 @@
 				"content": "$1",
 				"example": "3, 4, 12, 42"
 			}
-		}	
+		}
 	},
 	
+	"insert_character" : {
+		"message" : "Insérer $character$",
+		"placeholders": {
+			"character": {
+				"content": "$1",
+				"example": "A, B, ..."
+			}
+		}
+
+	},
+
+	"remove_character" : {
+		"message" : "Supprimer"
+	},
+
 	
 
 	"title_favorite" : {

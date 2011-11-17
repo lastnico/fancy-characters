@@ -41,6 +41,7 @@ a:visited {
 ul.tabs {
 	padding:		0;
 	margin:			5px 0 0;
+	height:			24px;
 }
 
 ul.tabs li {
@@ -52,7 +53,11 @@ ul.tabs li {
 	border-width: 		1px 1px 0 1px;
 	border-style: 		solid;
 	cursor:				pointer;
-	font-size:			12px;
+	font-size:			13px;
+}
+
+ul.tabs li.symbol {
+	padding:			3px 12px 2px;
 }
 
 ul.tabs li:hover {
@@ -123,8 +128,26 @@ div.characters span:hover {
 	-webkit-transition:	background-color 0.3s ease-in;
 }
 
+#smileys .characters span {
+	display:			inline-block;
+	width:				22%;
+	padding:			4px 4px;
+	text-align:			center;
+	white-space: 		nowrap;
+}
+
+
 div.characters span:active {
 	color:				red;
+}
+
+#nobreak-space {
+	color:				#ccc;
+}
+
+#narrow-nobreak-space {
+	color:				#ccc;
+	font-size:			12px;
 }
 
 .preview {
@@ -180,6 +203,7 @@ div.characters#favorite {
 
 .link.removeCharacter:hover {
 	color:				orange;
+	font-weight: 		normal;
 }
 
 .link.removeCharacter:active {
@@ -242,7 +266,7 @@ section .result.empty {
 section .result.empty .void {
 	color:				#739696;
 	line-height:		22px;
-	font-size:			28px !important;
+	font-size:			24px !important;
 	font-weight:		bold;
 	font-family: 		'Century Gothic', arial, serif !important;
 }
@@ -361,7 +385,7 @@ footer {
 	left:				5%;
 	text-align: 		center;
 	z-index: 			20;
-	background-color: 	#88db3f;
+	background-color: 	#519610;
 	border-radius:		5px;
 	padding:			3px 3px;
 	color:				white;

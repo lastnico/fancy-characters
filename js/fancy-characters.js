@@ -87,7 +87,7 @@ function insertInInput(editable, character) {
 }
 
 function insertCharacter(character) {
-	var result = this.findActiveElement(document);
+	var result = findActiveElement(document);
 	
 	if (! result) {
 		return false;
@@ -134,3 +134,63 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	
 	
 });
+
+
+/*
+
+TODO Include "js/jquery.hotkeys-0.7.9.js", in manifest.json
+
+//if (localStorage['shortcuts'] == 'true') {
+//	keyboard_shortcuts();
+//}
+
+function keyboard_shortcuts() {
+	console.log("Keyboard shortcuts enabled.");
+	
+	$(document).bind('keydown', {combi:'ctrl+shift+m', disableInInput: false}, function(e) {
+		console.log('you pressed ctrl+shift+m');
+		
+		var result = findActiveElement(document);
+		
+		if (! result) {
+			console.log("No Active Element");
+			return false;
+		}
+		
+		var editable = result.activeElement;
+
+		//console.log($(editable).qtipFancy());
+		
+		$(editable).hover(function() {
+				console.log("COUCOU ON");
+				$(this).after("O");
+			}, 
+			function() {
+				console.log("COUCOU OFF");
+				$(this).after("F");
+			})
+		.after("<h1>TOTOTOT</h1>")
+		.qtip({
+			content: 'An example tooltip',
+			show: 'click',
+			hide: 'click',
+			position: {
+				my: 'center left',
+				at: 'center right'
+			},
+			style: {
+				classes: 'ui-tooltip-shadow ui-tooltip-rounded'
+			}
+		});
+		
+		$(editable).css("color", "red");
+	
+		
+		insertCharacter("2");
+
+		return false;
+	});
+
+		
+}
+*/

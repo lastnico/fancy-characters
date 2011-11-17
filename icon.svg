@@ -10,79 +10,54 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="850"
+   height="850"
    id="svg2"
-   version="1.1"
+   sodipodi:version="0.32"
    inkscape:version="0.48.1 r9760"
-   sodipodi:docname="New document 1">
+   version="1.0"
+   sodipodi:docname="icon.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/Users/nicolas/Documents/workspace/fancy-characters/icon16.png"
+   inkscape:export-xdpi="1.6900001"
+   inkscape:export-ydpi="1.6900001">
   <defs
      id="defs4">
     <linearGradient
-       id="linearGradient3843">
+       inkscape:collect="always"
+       id="linearGradient3778">
       <stop
-         style="stop-color:#24384b;stop-opacity:1;"
+         style="stop-color:#355587;stop-opacity:1;"
          offset="0"
-         id="stop3845" />
+         id="stop3780" />
       <stop
-         style="stop-color:#025c92;stop-opacity:0;"
+         style="stop-color:#355587;stop-opacity:0;"
          offset="1"
-         id="stop3847" />
+         id="stop3782" />
     </linearGradient>
-    <linearGradient
-       id="linearGradient3755">
-      <stop
-         style="stop-color:#e5e5e5;stop-opacity:1;"
-         offset="0"
-         id="stop3757" />
-      <stop
-         style="stop-color:#ffffff;stop-opacity:0;"
-         offset="1"
-         id="stop3759" />
-    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 425 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="850 : 425 : 1"
+       inkscape:persp3d-origin="425 : 283.33333 : 1"
+       id="perspective2894" />
     <filter
        inkscape:collect="always"
-       id="filter3769">
+       id="filter3073">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="2.293578"
-         id="feGaussianBlur3771" />
+         stdDeviation="12.375"
+         id="feGaussianBlur3075" />
     </filter>
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient3755"
-       id="linearGradient3781"
-       x1="145.29407"
-       y1="400.54745"
-       x2="327.06058"
-       y2="236.90276"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3843"
-       id="linearGradient3849"
-       x1="231.08685"
-       y1="313.70663"
-       x2="306.31482"
-       y2="438.59171"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3843"
-       id="linearGradient3865"
-       x1="227.82262"
-       y1="323.72263"
-       x2="421.40091"
-       y2="556.05774"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3843"
-       id="linearGradient3873"
-       x1="116.82742"
-       y1="267.66208"
-       x2="447.7338"
-       y2="363.07874"
+       xlink:href="#linearGradient3778"
+       id="linearGradient3784"
+       x1="455.32339"
+       y1="260.44437"
+       x2="800"
+       y2="400"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
@@ -90,21 +65,47 @@
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="218.96185"
-     inkscape:cy="730.22138"
+     inkscape:zoom="0.63057287"
+     inkscape:cx="565.37025"
+     inkscape:cy="495.93673"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
+     width="850px"
+     height="850px"
      showgrid="false"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     inkscape:window-width="1080"
-     inkscape:window-height="765"
+     inkscape:grid-points="true"
+     inkscape:object-points="true"
+     inkscape:window-width="1440"
+     inkscape:window-height="796"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2333"
+       originx="0px"
+       originy="0px"
+       spacingx="0px"
+       spacingy="0px"
+       empspacing="4" />
+    <inkscape:grid
+       id="GridFromPre046Settings"
+       type="xygrid"
+       originx="0px"
+       originy="25px"
+       spacingx="25px"
+       spacingy="25px"
+       color="#0000ff"
+       empcolor="#0000ff"
+       opacity="0.2"
+       empopacity="0.4"
+       empspacing="4" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -114,157 +115,132 @@
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title></dc:title>
+        <dc:date>11/December/2007</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Wikimedia Commons User:Klem</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Wikimedia Commons User:Klem</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Wikimedia Commons User:Klem</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Yin and Yang</rdf:li>
+            <rdf:li>Yin &amp; Yang</rdf:li>
+            <rdf:li>Yin</rdf:li>
+            <rdf:li>Ying</rdf:li>
+            <rdf:li>Yang</rdf:li>
+            <rdf:li>yinyang</rdf:li>
+            <rdf:li>yingyang</rdf:li>
+            <rdf:li>Tiandi Zhiran Hetu</rdf:li>
+            <rdf:li>Heaven and Earth’s Natural Diagram of the River</rdf:li>
+            <rdf:li>Taijitu</rdf:li>
+            <rdf:li>Diagram of the Great Ultimate.</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Liu Mu (1011-1064 AD) - Hetu (Diagram of River) and Luoshu (Chart of Luo); 
+Shao Yong (1011-1077 AD) - Xiantian tu (Diagram of Preceding Heaven); 
+Zhou Dunyi (1017-1073 AD) - Taijitu (Diagram of the Great Ultimate); 
+Zhao Huiqian (1351-1395 AD) - Tiandi Zhiran Hetu (Heaven and Earth’s Natural Diagram of the River); 
+Wikimedia Commons user Klem</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <dc:description>A graphical depiction of Yin and Yang in its conventional orientation - the hot, bright, white yang nature rises while the cold, dark, black yin nature descends.
+The symbol is shown over a feather edged grey background for clarity when displayed on black or white.
+This representation of the traditional Chinese diagram was created from scratch in Inkscape by Wikicommons user &quot;Klem&quot;.</dc:description>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+        <dc:relation />
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     inkscape:label="Background"
      inkscape:groupmode="layer"
-     id="layer1">
-    <rect
-       ry="14.285714"
-       y="234.36218"
-       x="113.42857"
-       height="200"
-       width="200"
-       id="rect3763"
-       style="fill:#000000;fill-opacity:0.60869565;stroke:#211c1c;stroke-width:6.69999981;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;filter:url(#filter3769)" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke:#313031;stroke-opacity:1"
-       id="rect2985"
-       width="200"
-       height="200"
-       x="111.42857"
-       y="232.36218"
-       ry="14.285714" />
-    <text
-       sodipodi:linespacing="125%"
-       id="text3811"
-       y="382.61075"
-       x="191.37903"
-       style="font-size:111.44966124999999124px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#24384b;fill-opacity:0.62666667;stroke:none;font-family:Sans"
-       xml:space="preserve"><tspan
-         y="382.61075"
-         x="191.37903"
-         id="tspan3813"
-         sodipodi:role="line">☯</tspan></text>
-    <rect
-       ry="13.652169"
-       y="237.30208"
-       x="116.36847"
-       height="191.13037"
-       width="191.13037"
-       id="rect3773"
-       style="fill:url(#linearGradient3781);fill-opacity:1;stroke:#ffffff;stroke-width:4.77825928000000033;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-    <text
-       xml:space="preserve"
-       style="font-size:80.73986053000000140px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient3849);fill-opacity:1;stroke:none;font-family:Sans"
-       x="184.57268"
-       y="351.37662"
-       id="text3783"
-       sodipodi:linespacing="125%"
-       transform="scale(1.1774277,0.84930904)"><tspan
-         sodipodi:role="line"
-         x="184.57268"
-         y="351.37662"
-         id="tspan3787"
-         style="fill-opacity:1;fill:url(#linearGradient3849)">✔</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:111.44966124999999124px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient3865);fill-opacity:1;stroke:none;font-family:Sans"
-       x="189.37903"
-       y="380.61075"
-       id="text3789"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3791"
-         x="189.37903"
-         y="380.61075"
-         style="fill-opacity:1;fill:url(#linearGradient3865)">☯</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:68.58485412999999653px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#24384b;fill-opacity:1;stroke:none;font-family:Sans"
-       x="239.87318"
-       y="419.37271"
-       id="text3793"
-       sodipodi:linespacing="125%"
-       transform="scale(1.0106441,0.98946804)"><tspan
-         sodipodi:role="line"
-         id="tspan3795"
-         x="239.87318"
-         y="419.37271">®</tspan></text>
-    <text
-       transform="scale(1.0156738,0.98456808)"
-       sodipodi:linespacing="125%"
-       id="text3819"
-       y="319.52118"
-       x="116.44662"
-       style="font-size:82.84354401px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#24384b;fill-opacity:0.62666668;stroke:none;font-family:Sans"
-       xml:space="preserve"><tspan
-         y="319.52118"
-         x="116.44662"
-         id="tspan3821"
-         sodipodi:role="line">♻</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:82.84354400999998802px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient3873);fill-opacity:1;stroke:none;font-family:Sans"
-       x="115.08814"
-       y="315.82922"
-       id="text3797"
-       sodipodi:linespacing="125%"
-       transform="scale(1.0156738,0.98456811)"><tspan
-         sodipodi:role="line"
-         id="tspan3799"
-         x="115.08814"
-         y="315.82922"
-         style="fill-opacity:1;fill:url(#linearGradient3873)">♻</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:92.31042480000000694px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#24384b;fill-opacity:1;stroke:none;font-family:Sans"
-       x="129.30852"
-       y="404.78033"
-       id="text3803"
-       sodipodi:linespacing="125%"
-       transform="scale(0.93985935,1.063989)"><tspan
-         sodipodi:role="line"
-         id="tspan3805"
-         x="129.30852"
-         y="404.78033">☁</tspan></text>
-    <text
-       transform="scale(1.1774277,0.84930904)"
-       sodipodi:linespacing="125%"
-       id="text3807"
-       y="353.73148"
-       x="186.2713"
-       style="font-size:80.73986053000000140px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#24384b;fill-opacity:0.62666667;stroke:none;font-family:Sans"
-       xml:space="preserve"><tspan
-         id="tspan3809"
-         y="353.73148"
-         x="186.2713"
-         sodipodi:role="line">✔</tspan></text>
-    <text
-       transform="scale(1.0106441,0.98946801)"
-       sodipodi:linespacing="125%"
-       id="text3815"
-       y="421.39401"
-       x="241.85213"
-       style="font-size:68.58485412999999653px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#24384b;fill-opacity:0.62666667;stroke:none;font-family:Sans"
-       xml:space="preserve"><tspan
-         y="421.39401"
-         x="241.85213"
-         id="tspan3817"
-         sodipodi:role="line">®</tspan></text>
-    <text
-       transform="scale(0.93985935,1.063989)"
-       sodipodi:linespacing="125%"
-       id="text3823"
-       y="406.66006"
-       x="131.43649"
-       style="font-size:92.31042480000000694px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#24384b;fill-opacity:0.62666667;stroke:none;font-family:Sans"
-       xml:space="preserve"><tspan
-         y="406.66006"
-         x="131.43649"
-         id="tspan3825"
-         sodipodi:role="line">☁</tspan></text>
+     id="layer1"
+     style="display: inline;">
+    <path
+       sodipodi:type="arc"
+       style="opacity:0.83741377;fill:#7f7f7f;fill-opacity:1;stroke:#7f7f7f;stroke-width:25;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3073)"
+       id="pathShadowGlow"
+       sodipodi:cx="400"
+       sodipodi:cy="400"
+       sodipodi:rx="400"
+       sodipodi:ry="400"
+       d="m 800,400 a 400,400 0 1 1 -800,0 400,400 0 1 1 800,0 z"
+       inkscape:label="#Background Shadow/Glow - NOT part of the diagram but necessary for clarity on black or white backgrounds"
+       transform="translate(25,31)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Yin and Yang Symbol">
+    <g
+       id="gYin"
+       inkscape:label="#Yin"
+       style="fill:url(#linearGradient3784);fill-opacity:1"
+       transform="matrix(0,1,-1,0,825,25)">
+      <path
+         inkscape:connector-curvature="0"
+         id="pathYinBG"
+         transform="matrix(-1,0,0,-1,825,825)"
+         d="M 425,25 C 204.2,25 25,204.2 25,425 25,645.8 204.2,825 425,825 314.6,825 225,735.4 225,625 225,514.6 314.6,425 425,425 535.4,425 625,335.4 625,225 625,114.6 535.4,25 425,25 z m 0,137.5 c 34.5,0 62.5,28 62.5,62.5 0,34.5 -28,62.5 -62.5,62.5 -34.5,0 -62.5,-28 -62.5,-62.5 0,-34.5 28,-62.5 62.5,-62.5 z"
+         style="fill:url(#linearGradient3784);fill-opacity:1;stroke:none" />
+      <path
+         inkscape:label="#Yin Spot"
+         d="m 450,200 c 0,27.61424 -22.38576,50 -50,50 -27.61424,0 -50,-22.38576 -50,-50 0,-27.61424 22.38576,-50 50,-50 27.61424,0 50,22.38576 50,50 z"
+         sodipodi:ry="50"
+         sodipodi:rx="50"
+         sodipodi:cy="200"
+         sodipodi:cx="400"
+         id="pathYinS"
+         style="fill:url(#linearGradient3784);fill-opacity:1;stroke:none"
+         sodipodi:type="arc"
+         transform="matrix(1.25,0,0,1.25,-100,-50)" />
+    </g>
+    <g
+       id="gYang"
+       inkscape:label="#Yang"
+       transform="matrix(0,-1,1,0,0,850)">
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         d="m 425,25 c 110.4,0 200,89.6 200,200 0,110.4 -89.6,200 -200,200 -110.4,0 -200,89.6 -200,200 0,110.4 89.6,200 200,200 C 645.8,825 825,645.8 825,425 825,204.2 645.8,25 425,25 z m 0,537.5 c 34.5,0 62.5,28 62.5,62.5 0,34.5 -28,62.5 -62.5,62.5 -34.5,0 -62.5,-28 -62.5,-62.5 0,-34.5 28,-62.5 62.5,-62.5 z"
+         id="pathYangBG" />
+      <path
+         sodipodi:type="arc"
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         id="pathYangS"
+         sodipodi:cx="400"
+         sodipodi:cy="200"
+         sodipodi:rx="50"
+         sodipodi:ry="50"
+         d="m 450,200 c 0,27.61424 -22.38576,50 -50,50 -27.61424,0 -50,-22.38576 -50,-50 0,-27.61424 22.38576,-50 50,-50 27.61424,0 50,22.38576 50,50 z"
+         transform="matrix(1.25,0,0,-1.25,-75,475)"
+         inkscape:label="#Yang Spot" />
+    </g>
   </g>
 </svg>

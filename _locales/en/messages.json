@@ -4,7 +4,7 @@
 		"description":	"Extension Name"
 	},
 	"description" : {
-		"message" : "Extend your keyboard with hundred of nice Unicode characters (☺ © ♨ ♡…) in forms of every website. Tools to convert words to Flipped ʇxǝʇ, Rounded ⓣⓔⓧⓣ, Leet 5P34K, Morse,...",
+		"message" : "Extend your keyboard with hundreds of nice Unicode characters (☺ © ♨ ♡…) in forms of every website. Tools to convert words to Flipped ʇxǝʇ, Rounded ⓣⓔⓧⓣ, Leet 5P34K, Morse,...",
 		"description":	"Extension Description"
 	},
 	
@@ -13,15 +13,17 @@
 		"message" : "Click to insert a character at the current cursor position."
 	},
 	
-	
 	"tab_symbols" : {
-		"message" : "Symbols"
+		"message" : "☼"
 	},
 	"tab_math" : {
-		"message" : "Math"
+		"message" : "∑"
 	},
 	"tab_shapes" : {
-		"message" : "Shapes"
+		"message" : "⬠"
+	},
+	"tab_smileys" : {
+		"message" : ";-)"
 	},
 	"tab_various" : {
 		"message" : "Custom"
@@ -48,6 +50,9 @@
 		"message" : "Shapes & Arrows"
 	},
 
+	"title_smileys" : {
+		"message" : "Smileys :-)"
+	},
 	
 	"title_custom" : {
 		"message" : "Custom Characters"
@@ -73,9 +78,6 @@
 	"empty_result" : {
 		"message" : "Type your text on the desired field below..."
 	},
-	"insert_character" : {
-		"message" : "Insert"
-	},
 	
 	"used_once" : {
 		"message" : "(used once)"
@@ -91,11 +93,24 @@
 				"content": "$1",
 				"example": "3, 4, 12, 42"
 			}
-		}	
+		}
 	},
 	
-	
+	"insert_character" : {
+		"message" : "Insert $character$",
+		"placeholders": {
+			"character": {
+				"content": "$1",
+				"example": "A, B, ..."
+			}
+		}
 
+	},
+
+	"remove_character" : {
+		"message" : "Remove"
+	},
+	
 	"title_favorite" : {
 		"message" : "Favorites"
 	},

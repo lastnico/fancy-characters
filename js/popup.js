@@ -1,7 +1,7 @@
 
 (function( $ ){
 	$.fn.emptyResult = function() {
-		this.empty().html("<div class='void'>√∏</div>" + chrome.i18n.getMessage("empty_result") + "</div>").addClass("empty");
+		this.empty().html("<div class='void'>Ø</div>" + chrome.i18n.getMessage("empty_result") + "</div>").addClass("empty");
 		return this;
 	};
 	
@@ -20,7 +20,7 @@
 		this.qtip({
 			content: {
 				text: function(api) {
-					return "<div class='tipAdd'>" + chrome.i18n.getMessage("insert_character") + " <span class='character'>" + $(this).text() + "</span>" + ( ($(this).attr("data-name")) ? "<div class='character-description'>" + $(this).attr("data-name") + ".</div>" : ".") + "</div>";
+					return "<div class='tipAdd'>" + chrome.i18n.getMessage("insert_character", "<span class='character'>" + $(this).text() + "</span>") + " " + ( ($(this).attr("data-name")) ? "<div class='character-description'>" + $(this).attr("data-name") + ".</div>" : ".") + "</div>";
 				}
 			},
 			show: {
@@ -82,7 +82,7 @@ $().ready(function() {
 	new Favorites().refreshBlock();
 	refreshCustomCharacters();
 	
-	$(".characters:not(#custom, #favorite) span").characterTip();
+	$(".characters:not(#custom, #favorite, #smileys) span").characterTip();
 	
 	SYMBOL_FONT_FAMILY = $("div.characters span").css("font-family");
 	SYMBOL_FONT_SIZE = $("div.characters span").css("font-size");
@@ -116,9 +116,20 @@ $().ready(function() {
 		}
 	});
 
-	$(".characters span").live("click", function() {
-		appendCharacter($(this).text());
+	$("section:not(#smileys) .characters span").live("click", function() {
+		if ($(this).is("#nobreak-space"))
+			appendCharacter(" ");
+		else if ($(this).is("#narrow-nobreak-space"))
+			appendCharacter(" ");
+		else
+			appendCharacter($(this).text());
 	});
+	
+	$("section#smileys .characters span").live("click", function() {
+		appendContent($(this).text());
+	}).characterTip();
+
+
 	
 	$(".changeFont").live("click", function() {
 		var fontFamily = $(this).css("fontFamily");
@@ -385,15 +396,7 @@ function removeCustomCharacter() {
 	var character = $(this).attr("rel");
 	var characters = getCustoms();
 	
-	// Make this work, whatever character is (including regex keywords)
 	characters = characters.replace(character + "", "");
-	
-	var characterSelector = character;
-	if (character == '"') {
-		characterSelector = '\\"';
-	}
-
-	$(".characters#custom span[rel=\"" + characterSelector + "\"]").qtip("toggle", false);
 	
 	localStorage['customCharacters'] = characters;
 	refreshCustomCharacters();
@@ -404,6 +407,7 @@ function removeCustomCharacter() {
 function refreshCustomCharacters() {
 	var characters = getCustoms();
 
+	$(".characters#custom span").qtip("destroy");
 	$(".characters#custom").empty();
 	
 	for (var i = 0; character = characters[i]; ++i) {
@@ -411,8 +415,8 @@ function refreshCustomCharacters() {
 			.qtip({
 				content: {
 					text: function(api) {
-						var tip = $("<div></div>").addClass("tipAdd").append("Insert <span class='character'>" + $(this).text() + "</span>.")
-							.append($("<span></span>").addClass("link removeCharacter").attr("rel", $(this).text()).append("Remove From List").click(removeCustomCharacter))
+						var tip = $("<div></div>").addClass("tipAdd").append(chrome.i18n.getMessage("insert_character", " <span class='character'>" + $(this).text() + "</span>."))
+							.append($("<span></span>").addClass("link removeCharacter").attr("rel", $(this).text()).append(chrome.i18n.getMessage("remove_character")).click(removeCustomCharacter))
 							.append(".");
 						
 						return tip;
@@ -510,8 +514,6 @@ function appendCharacter(character) {
 	var favorites = new Favorites();
 	favorites.useCharacter(character);
 	favorites.store();
-	
-	hideTips();
 }
 
 function hideTips() {
@@ -527,6 +529,7 @@ function l10n() {
 	$("section#symbols h1").text(chrome.i18n.getMessage("title_symbols"));
 	$("section#math h1").text(chrome.i18n.getMessage("title_math"));
 	$("section#shapes h1").text(chrome.i18n.getMessage("title_shapes"));
+	$("section#smileys h1").text(chrome.i18n.getMessage("title_smileys"));
 
 	$("h1#customTitle").text(chrome.i18n.getMessage("title_custom"));
 	$("#removeCustom").text(chrome.i18n.getMessage("remove_custom"));
@@ -655,6 +658,7 @@ Favorites.prototype.empty = function() {
 };
 
 Favorites.prototype.refreshBlock = function() {
+	$(".characters#favorite span").qtip("destroy");
 	$(".characters#favorite").empty();
 	
 	for (var index = 0; index < this.favorites.length; ++index) {
@@ -677,7 +681,7 @@ Favorites.prototype.refreshBlock = function() {
 		var spanCharacter = $("<span></span>").text("" + character)
 			.qtip({
 				content: {
-					text: $("<div></div>").addClass("tipAdd").append(chrome.i18n.getMessage("insert_character") + " <span class='character'>" + character + "</span>")
+					text: $("<div></div>").addClass("tipAdd").append(chrome.i18n.getMessage("insert_character", " <span class='character'>" + character + "</span>"))
 							.append(" <strong>" + usageString + "</strong>.")
 				},
 				show: {
